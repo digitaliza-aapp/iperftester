@@ -31,6 +31,11 @@ El enlace a examinar se delimita por dos equipos ejecutando **iperftester** dond
 ## Casos de uso
 
 ### Medir ancho de banda (throughtput) y calidad de enlaces
+![](http://www.delegacionprovincial.com/mediawiki/upload_files/lxd_images/images/lxd_x2go_scenario.png)
+
+```
+Bandwidth tester
+```
 
 
 ## Créditos
