@@ -13,13 +13,15 @@ El enlace a examinar se delimita por dos equipos ejecutando **iperftester** dond
    - Mirror para visualizar tráfico de entrada y salida 		               (usuario mirror)
    - Modo experto - Herramientas tcpdump tshark ngrep iptraf-ng etc. 	   (usuario root)
 
-### Nuevas funciones para incluir en nuevas versiones:
+### Versión 1:
 
 - Programación horaria de pruebas iperf / iperf3
 - APIRest
    - Descarga resultados iperf / iperf3 (Json)
    - Consultar tráfico E/S (mirror / sflow) 
    - Documentación con Swagger
+
+### Versión 2 - 3:
 - Modo sonda / colector
 - Colector Sflow para visualizar tráfico E/S en tiempo real 
 - Monitorizar sondas mediante (Icinga/Nagios)
@@ -40,14 +42,20 @@ Bandwidth tester (Versión 0)
 
 ## Créditos
 
+### Version 0:
 - [**Debian**](https://www.debian.org/)
 - [**iperf**](https://sourceforge.net/projects/iperf2/)
 - [**iperf3**](https://github.com/esnet/iperf#iperf3--a-tcp-udp-and-sctp-network-bandwidth-measurement-tool)
+
+### Versión 1:
+- [**Swagger**](https://swagger.io/)
+- [**LXD - Linux container**](https://linuxcontainers.org/lxd/)
+
+### Versión 2 - 3:
 - [**Grafana**](https://grafana.com/)
 - [**Mediawiki**](https://www.mediawiki.org/wiki/MediaWiki)
 - [**Icinga**](https://www.icinga.com/)
-- [**Swagger**](https://swagger.io/)
 - [**Docker**](https://www.docker.com/)
-- [**LXD - Linux container**](https://linuxcontainers.org/lxd/)
+
 
 
