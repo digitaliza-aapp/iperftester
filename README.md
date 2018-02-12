@@ -1,6 +1,6 @@
 # Iperftester
 
-Iperftester es una distribución live basada en [**Debian**](https://www.debian.org/) para medir el ancho de banda (throughtput) y calidad de enlaces de red mediante [**iperf**](https://sourceforge.net/projects/iperf2/) / [**iperf3**](https://github.com/esnet/iperf#iperf3--a-tcp-udp-and-sctp-network-bandwidth-measurement-tool) 
+Iperftester es una distribución live basada en [**Debian**](https://www.debian.org/) para medir el ancho de banda (throughput) y calidad de enlaces de red mediante [**iperf**](https://sourceforge.net/projects/iperf2/) / [**iperf3**](https://github.com/esnet/iperf#iperf3--a-tcp-udp-and-sctp-network-bandwidth-measurement-tool) 
 
 El enlace a examinar se delimita por dos equipos ejecutando **iperftester** donde uno actua como cliente y otro como servidor.
 
@@ -17,9 +17,9 @@ El enlace a examinar se delimita por dos equipos ejecutando **iperftester** dond
 ### Version 0 (febrero 2018):
 
 - Iperftester LiveCD
-   - usuario **iperf**: Medir ancho de banda (throughtput) y calidad de enlaces
-   - usuario **mirror**: Visualizar tráfico E/S en tiempo real (puerto mirror)
-   - usuario **root**: (Modo experto) Herramientas tcpdump tshark ngrep iptraf-ng etc
+   - Medir ancho de banda y calidad de enlaces
+   - Visualizar tráfico E/S en tiempo real (puerto mirror)
+   - Herramientas tcpdump tshark ngrep iptraf-ng etc (Modo experto)
 
 ![](http://www.delegacionprovincial.com/mediawiki/upload_files/iperftester_images/iperftester_version_00r02.png)
 
@@ -33,7 +33,7 @@ Versión 0
 - APIRest
    - Descarga resultados iperf / iperf3 (Json)
    - Consultar tráfico E/S (mirror / sflow) 
-   - Documentación con Swagger
+   - Documentación Swagger
 - Facilitar despliegue (Contenedores LXD)
 
 ### Versión 2 - 3:
