@@ -17,9 +17,9 @@ El enlace a examinar se delimita por dos equipos ejecutando **iperftester** dond
 ### Version 0 (febrero 2018):
 
 - Iperftester LiveCD
-   - Medir ancho de banda (throughtput) y calidad de enlaces	            (usuario iperf)
-   - Mirror para visualizar tráfico de entrada y salida 		               (usuario mirror)
-   - Modo experto - Herramientas tcpdump tshark ngrep iptraf-ng etc. 	   (usuario root)
+   - usuario **iperf**: Medir ancho de banda (throughtput) y calidad de enlaces
+   - usuario **mirror**: Visualizar tráfico E/S en tiempo real (puerto mirror)
+   - usuario **root**: (Modo experto) Herramientas tcpdump tshark ngrep iptraf-ng etc
 
 ![](http://www.delegacionprovincial.com/mediawiki/upload_files/iperftester/iperftester_version_0.png)
 
