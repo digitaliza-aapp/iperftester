@@ -21,7 +21,7 @@ El enlace a examinar se delimita por dos equipos ejecutando **iperftester** dond
    - usuario **mirror**: Visualizar tráfico E/S en tiempo real (puerto mirror)
    - usuario **root**: (Modo experto) Herramientas tcpdump tshark ngrep iptraf-ng etc
 
-![](http://www.delegacionprovincial.com/mediawiki/upload_files/iperftester_images/iperftester_version_0.png)
+![](http://www.delegacionprovincial.com/mediawiki/upload_files/iperftester_images/iperftester_version_00r01.png)
 
 ```
 Versión 0
