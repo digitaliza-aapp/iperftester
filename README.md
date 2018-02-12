@@ -6,9 +6,9 @@ El enlace a examinar se delimita por dos equipos ejecutando **iperftester** dond
 
 ## Perfiles de uso:
 
-### iperf (usuario: iperf)
+### iperftester (usuario: iperf)
 
-### mirror (usuario: mirror)
+### mirroring (usuario: mirror)
 
 ### Experto (usuario: root)
 
