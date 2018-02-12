@@ -21,9 +21,9 @@ El enlace a examinar se delimita por dos equipos ejecutando **iperftester** dond
    - Consultar tráfico E/S (mirror / sflow) 
    - Documentación con Swagger
 - Modo sonda / colector
-- Colector SFLOW para visualizar en tiempo real tráfico E/S
+- Colector Sflow para visualizar tráfico E/S en tiempo real 
 - Monitorizar sondas mediante (Icinga/Nagios)
-- Visualizar paneles con tráfico E/S (Grafana y Mediawiki)
+- Paneles con tráfico E/S (Grafana y Mediawiki)
   https://github.com/fmbrieva/mediawiki-grafana
 - Herramienta Web para centralizar resultados y controlar sondas
 - Facilitar despliegue de sondas (Docker y contenedores LXD)
