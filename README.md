@@ -2,7 +2,7 @@
 
 Iperftester es una distribución live basada en [**Debian**](https://www.debian.org/) para medir el ancho de banda (throughtput) y calidad de enlaces de red mediante [**iperf**](https://sourceforge.net/projects/iperf2/) / [**iperf3**](https://github.com/esnet/iperf#iperf3--a-tcp-udp-and-sctp-network-bandwidth-measurement-tool) 
 
-El enlace a examinar se delimita por dos equipos ejecutando [**iperftester**]  (uno actua como cliente y otro como servidor)
+El enlace a examinar se delimita por dos equipos ejecutando **iperftester** donde uno actua como cliente y otro como servidor.
 
 ## Roadmap
 
@@ -20,8 +20,7 @@ El enlace a examinar se delimita por dos equipos ejecutando [**iperftester**]  (
    - Descarga resultados iperf / iperf3 (Json)
    - Consultar tráfico E/S (mirror / sflow) 
    - Documentación con Swagger
-- Versión en inglés
-- Modo sonda / servidor
+- Modo sonda / colector
 - Colector SFLOW para visualizar en tiempo real tráfico E/S
 - Monitorizar sondas mediante (Icinga/Nagios)
 - Visualizar paneles con tráfico E/S (Grafana y Mediawiki)
@@ -29,10 +28,13 @@ El enlace a examinar se delimita por dos equipos ejecutando [**iperftester**]  (
 - Herramienta Web para centralizar resultados y controlar sondas
 - Facilitar despliegue de sondas (Docker y contenedores LXD)
 
+## Casos de uso
+
+### Medir ancho de banda (throughtput) y calidad de enlaces
+
 
 ## Créditos
 
-Iperftester utiliza las siguientes herramientas:
 - [**Debian**](https://www.debian.org/
 - [**iperf**](https://sourceforge.net/projects/iperf2/)
 - [**iperf3**](https://github.com/esnet/iperf#iperf3--a-tcp-udp-and-sctp-network-bandwidth-measurement-tool)
