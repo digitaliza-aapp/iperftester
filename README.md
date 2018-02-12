@@ -20,6 +20,7 @@ El enlace a examinar se delimita por dos equipos ejecutando **iperftester** dond
    - Descarga resultados iperf / iperf3 (Json)
    - Consultar tráfico E/S (mirror / sflow) 
    - Documentación con Swagger
+- Facilitar despliegue (Contenedores LXD)
 
 ### Versión 2 - 3:
 - Modo sonda / colector
@@ -28,7 +29,7 @@ El enlace a examinar se delimita por dos equipos ejecutando **iperftester** dond
 - Paneles con tráfico E/S (Grafana y Mediawiki)
   https://github.com/fmbrieva/mediawiki-grafana
 - Herramienta Web para centralizar resultados y controlar sondas
-- Facilitar despliegue de sondas (Docker y contenedores LXD)
+- Facilitar despliegue de sondas (Docker)
 
 ## Casos de uso
 
