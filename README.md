@@ -34,14 +34,20 @@ El enlace a examinar se delimita por dos equipos ejecutando **iperftester** dond
 ![](http://www.delegacionprovincial.com/mediawiki/upload_files/lxd_images/images/lxd_x2go_scenario.png)
 
 ```
-Bandwidth tester
+Bandwidth tester (Versión 0)
 ```
 
 
 ## Créditos
 
-- [**Debian**](https://www.debian.org/
+- [**Debian**](https://www.debian.org/)
 - [**iperf**](https://sourceforge.net/projects/iperf2/)
 - [**iperf3**](https://github.com/esnet/iperf#iperf3--a-tcp-udp-and-sctp-network-bandwidth-measurement-tool)
+- [**Grafana**](https://grafana.com/)
+- [**Mediawiki**](https://www.mediawiki.org/wiki/MediaWiki)
+- [**Icinga**](https://www.icinga.com/)
+- [**Swagger**](https://swagger.io/)
+- [**Docker**](https://www.docker.com/)
+- [**LXD - Linux container**](https://linuxcontainers.org/lxd/)
 
 
