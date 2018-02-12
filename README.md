@@ -12,9 +12,9 @@ El enlace a examinar se delimita por dos equipos ejecutando **iperftester** dond
 
 ### Experto (usuario: root)
 
-# Roadmap
+## Roadmap
 
-## Version 0 (febrero 2018):
+### Version 0 (febrero 2018):
 
 - Iperftester LiveCD
    - Medir ancho de banda (throughtput) y calidad de enlaces	            (usuario iperf)
@@ -27,7 +27,7 @@ El enlace a examinar se delimita por dos equipos ejecutando **iperftester** dond
 Versión 0
 ```
 
-## Versión 1:
+### Versión 1:
 
 - Programación horaria de pruebas iperf / iperf3
 - APIRest
@@ -36,7 +36,7 @@ Versión 0
    - Documentación con Swagger
 - Facilitar despliegue (Contenedores LXD)
 
-## Versión 2 - 3:
+### Versión 2 - 3:
 - Modo sonda / colector
 - Colector Sflow para visualizar tráfico E/S en tiempo real 
 - Monitorizar sondas mediante (Icinga/Nagios)
@@ -45,18 +45,18 @@ Versión 0
 - Herramienta Web para centralizar resultados y controlar sondas
 - Facilitar despliegue de sondas (Docker)
 
-# Créditos
+## Créditos
 
-## Version 0:
+### Version 0:
 - [**Debian**](https://www.debian.org/)
 - [**iperf**](https://sourceforge.net/projects/iperf2/)
 - [**iperf3**](https://github.com/esnet/iperf#iperf3--a-tcp-udp-and-sctp-network-bandwidth-measurement-tool)
 
-## Versión 1:
+### Versión 1:
 - [**Swagger**](https://swagger.io/)
 - [**LXD - Linux container**](https://linuxcontainers.org/lxd/)
 
-## Versión 2 - 3:
+### Versión 2 - 3:
 - [**Grafana**](https://grafana.com/)
 - [**Mediawiki**](https://www.mediawiki.org/wiki/MediaWiki)
 - [**Icinga**](https://www.icinga.com/)
