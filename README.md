@@ -4,7 +4,7 @@ Iperftester es una distribución live basada en [**Debian**](https://www.debian.
 
 El enlace a examinar se delimita por dos equipos ejecutando **iperftester** donde uno actua como cliente y otro como servidor.
 
-## Modos de uso:
+## Perfiles de uso:
 
 ### iperf (usuario: iperf)
 
