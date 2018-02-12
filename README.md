@@ -30,10 +30,11 @@ El enlace a examinar se delimita por dos equipos ejecutando iperftester, uno act
 - Facilitar despliegue de sondas (Docker y contenedores LXD)
 
 
-## Credits
-This extension works with:
+## Créditos
+
+Iperftester utiliza las siguientes herramientas:
+- Debian https://www.debian.org/
 - iperf https://sourceforge.net/projects/iperf2/ https://sourceforge.net/projects/iperf/
 - iperf3 https://github.com/esnet/iperf#iperf3--a-tcp-udp-and-sctp-network-bandwidth-measurement-tool
-- MediaWiki https://www.mediawiki.org
-- Grafana http://grafana.org/
+
 
