@@ -4,16 +4,30 @@ Iperftester es una distribución live basada en [**Debian**](https://www.debian.
 
 El enlace a examinar se delimita por dos equipos ejecutando **iperftester** donde uno actua como cliente y otro como servidor.
 
-## Roadmap
+## Modos de uso:
 
-### Version 0 (febrero 2018):
+### iperf (usuario: iperf)
+
+### mirror (usuario: mirror)
+
+### Experto (usuario: root)
+
+# Roadmap
+
+## Version 0 (febrero 2018):
 
 - Iperftester LiveCD
-   - Medir troughtput en tramos de red (iperf / iperf3)			            (usuario iperf)
+   - Medir ancho de banda (throughtput) y calidad de enlaces	            (usuario iperf)
    - Mirror para visualizar tráfico de entrada y salida 		               (usuario mirror)
    - Modo experto - Herramientas tcpdump tshark ngrep iptraf-ng etc. 	   (usuario root)
 
-### Versión 1:
+![](http://www.delegacionprovincial.com/mediawiki/upload_files/iperftester/iperftester_version_0.png)
+
+```
+Versión 0
+```
+
+## Versión 1:
 
 - Programación horaria de pruebas iperf / iperf3
 - APIRest
@@ -22,7 +36,7 @@ El enlace a examinar se delimita por dos equipos ejecutando **iperftester** dond
    - Documentación con Swagger
 - Facilitar despliegue (Contenedores LXD)
 
-### Versión 2 - 3:
+## Versión 2 - 3:
 - Modo sonda / colector
 - Colector Sflow para visualizar tráfico E/S en tiempo real 
 - Monitorizar sondas mediante (Icinga/Nagios)
@@ -31,32 +45,19 @@ El enlace a examinar se delimita por dos equipos ejecutando **iperftester** dond
 - Herramienta Web para centralizar resultados y controlar sondas
 - Facilitar despliegue de sondas (Docker)
 
-## Casos de uso
+# Créditos
 
-### Medir ancho de banda (throughtput) y calidad de enlaces
-![](http://www.delegacionprovincial.com/mediawiki/upload_files/lxd_images/images/lxd_x2go_scenario.png)
-
-```
-Bandwidth tester (Versión 0)
-```
-
-
-## Créditos
-
-### Version 0:
+## Version 0:
 - [**Debian**](https://www.debian.org/)
 - [**iperf**](https://sourceforge.net/projects/iperf2/)
 - [**iperf3**](https://github.com/esnet/iperf#iperf3--a-tcp-udp-and-sctp-network-bandwidth-measurement-tool)
 
-### Versión 1:
+## Versión 1:
 - [**Swagger**](https://swagger.io/)
 - [**LXD - Linux container**](https://linuxcontainers.org/lxd/)
 
-### Versión 2 - 3:
+## Versión 2 - 3:
 - [**Grafana**](https://grafana.com/)
 - [**Mediawiki**](https://www.mediawiki.org/wiki/MediaWiki)
 - [**Icinga**](https://www.icinga.com/)
 - [**Docker**](https://www.docker.com/)
-
-
-
