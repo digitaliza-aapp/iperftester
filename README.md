@@ -9,9 +9,9 @@ El enlace a examinar se delimita por dos equipos ejecutando iperftester, uno act
 ### Version 0 (febrero 2018):
 
 - Iperftester LiveCD
-   - Medir troughtput en tramos de red (iperf / iperf3)			(usuario iperf)
-   - Mirror para visualizar tráfico de entrada y salida 		(usuario mirror)
-   - Modo experto - Herramientas tcpdump tshark ngrep iptraf-ng etc. 	(usuario root)
+   - Medir troughtput en tramos de red (iperf / iperf3)			            (usuario iperf)
+   - Mirror para visualizar tráfico de entrada y salida 		               (usuario mirror)
+   - Modo experto - Herramientas tcpdump tshark ngrep iptraf-ng etc. 	   (usuario root)
 
 ### Nuevas funciones para incluir en nuevas versiones:
 
