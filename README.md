@@ -27,7 +27,7 @@ El enlace a examinar se delimita por dos equipos ejecutando **iperftester** dond
 Versión 0
 ```
 
-![](http://www.delegacionprovincial.com/mediawiki/upload_files/iperftester_images/iperftester_mirror_version_00r00.png)
+![](http://www.delegacionprovincial.com/mediawiki/upload_files/iperftester_images/iperftester_mirror_version_00r01.png)
 
 ```
 Versión 0
