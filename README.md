@@ -21,13 +21,13 @@ El enlace a examinar se delimita por dos equipos ejecutando **iperftester** dond
    - Visualizar tráfico E/S en tiempo real (puerto mirror)
    - Herramientas tcpdump tshark ngrep iptraf-ng etc (Modo experto)
 
-![](http://www.delegacionprovincial.com/mediawiki/upload_files/iperftester_images/iperftester_version_00r04.png)
+![](https://github.com/fmbrieva/iperftester/blob/master/use_case/iperftester_version_00r04.png?raw=true)
 
 ```
 Versión 0: usuario iperf 
 ```
 
-![](http://www.delegacionprovincial.com/mediawiki/upload_files/iperftester_images/iperftester_mirror_version_00r01.png)
+![](https://github.com/fmbrieva/iperftester/blob/master/use_case/iperftester_mirror_version_00r01.png?raw=true)
 
 ```
 Versión 0: usuario mirror
