@@ -33,6 +33,18 @@ Versión 0: usuario iperf
 Versión 0: usuario mirror
 ```
 
+![](https://github.com/fmbrieva/iperftester/blob/master/use_case/iperftester_macrolan_100M_00r01.png?raw=true)
+
+```
+Versión 0: usuario mirror
+```
+
+![](https://github.com/fmbrieva/iperftester/blob/master/use_case/iperftester_internet_300M_00r01.png?raw=true)
+
+```
+Versión 0: usuario mirror
+```
+
 
 
 ### Versión 1:
