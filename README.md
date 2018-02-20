@@ -27,12 +27,6 @@ El enlace a examinar se delimita por dos equipos ejecutando **iperftester** dond
 Versión 0: usuario iperf 
 ```
 
-![](https://github.com/fmbrieva/iperftester/blob/master/use_case/iperftester_mirror_version_00r01.png?raw=true)
-
-```
-Versión 0: usuario mirror
-```
-
 ![](https://github.com/fmbrieva/iperftester/blob/master/use_case/iperftester_macrolan_100M_00r01.png?raw=true)
 
 ```
