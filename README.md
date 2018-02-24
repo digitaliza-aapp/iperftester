@@ -45,8 +45,8 @@ Si necesita instalar nuevas herramientas y utiliza un proxy para acceder a inter
 
 Se desea medir el throughput y calidad de enlaces entre dos sedes:
 
-- Sede A: Red 10.10.10.1 Máscara 255.255.255.0 Gateway: 10.10.10.1 a 1Gbps/1000Mbps con conexión Macrolan 100Mbps 
-- Sede B: Red 10.10.20.1 Máscara 255.255.255.0 Gateway: 10.10.20.1 a 1Gbps/1000Mbps con conexión Macrolan 150Mbps  
+- Sede A: Red interna a 1Gbps/1000Mbps con conexión Macrolan 100Mbps 
+- Sede B: Red interna a 1Gbps/1000Mbps con conexión Macrolan 150Mbps  
 
 ![](https://github.com/fmbrieva/iperftester/blob/master/use_case/iperftester_macrolan_100M_escenario_00r01.png?raw=true)
 
