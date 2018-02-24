@@ -4,6 +4,24 @@ Iperftester es una distribución live basada en [**Debian**](https://www.debian.
 
 El enlace a examinar se delimita por dos equipos ejecutando **iperftester** donde uno actua como cliente y otro como servidor.
 
+![](https://github.com/fmbrieva/iperftester/blob/master/use_case/iperftester_version_00r04.png?raw=true)
+
+```
+Versión 0: usuario iperf 
+```
+Al iniciar el LiveCd **iperftester** se arrancan varios servidores:
+ - iperf3 TCP/UDP/STCP puerto 5201
+ - iperf TCP puerto 5001
+ - iperf UDP puerto 5002
+ - ssh puerto 22
+ 
+ El servidor ssh permite controlar remotamente los equipos y extraer los resultados de las pruebas mediante sftp.
+ 
+```
+Desde equipos con Windows puede utilizarse el programa WinSCP para descargar los resultados
+
+```
+
 ## Perfiles de uso:
 
 ### iperftester (usuario: iperf)
@@ -18,14 +36,12 @@ El enlace a examinar se delimita por dos equipos ejecutando **iperftester** dond
 
 - Iperftester LiveCD
    - Medir ancho de banda y calidad de enlaces
-   - Visualizar tráfico E/S en tiempo real (puerto mirror)
-   - Herramientas tcpdump tshark ngrep iptraf-ng etc (Modo experto)
+   - Automatizar pruebas y crear ficheros de log con los resultados.
+   - Visualizar tráfico E/S en tiempo real utilizando puertos mirror
+  
+ 
 
-![](https://github.com/fmbrieva/iperftester/blob/master/use_case/iperftester_version_00r04.png?raw=true)
 
-```
-Versión 0: usuario iperf 
-```
 
 ![](https://github.com/fmbrieva/iperftester/blob/master/use_case/iperftester_macrolan_100M_00r01.png?raw=true)
 
