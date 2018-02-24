@@ -1,11 +1,11 @@
 # Iperftester
 
-Iperftester es una distribución live basada en [**Debian**](https://www.debian.org/) para medir el ancho de banda (throughput) y calidad de enlaces de red mediante [**iperf**](https://sourceforge.net/projects/iperf2/) / [**iperf3**](https://github.com/esnet/iperf#iperf3--a-tcp-udp-and-sctp-network-bandwidth-measurement-tool) 
+Iperftester es una distribución liveCD basada en [**Debian**](https://www.debian.org/) para medir el ancho de banda (throughput) y calidad de enlaces de red mediante [**iperf**](https://sourceforge.net/projects/iperf2/) / [**iperf3**](https://github.com/esnet/iperf#iperf3--a-tcp-udp-and-sctp-network-bandwidth-measurement-tool) 
 
 El enlace a examinar se delimita por dos equipos ejecutando **iperftester** donde uno actua como cliente y otro como servidor.
 
 ```
-Un equipo ejecutanto **iperftester** puede actuar como cliente o servidor.
+Un equipo ejecutanto "iperftester" puede actuar como cliente o servidor.
 ```
 
 ![](https://github.com/fmbrieva/iperftester/blob/master/use_case/iperftester_version_00r04.png?raw=true)
@@ -13,8 +13,8 @@ Un equipo ejecutanto **iperftester** puede actuar como cliente o servidor.
 ```
 Pueden realizarse tests de forma automática donde solamente es necesario introducir ip/mascara/gateway
 ```
-Al iniciar el LiveCd se arrancan varios servidores:
 
+Al iniciar el LiveCd se arrancan varios servidores:
  - iperf3 TCP/UDP/STCP puerto 5201
  - iperf TCP puerto 5001
  - iperf UDP puerto 5002
@@ -23,8 +23,9 @@ Al iniciar el LiveCd se arrancan varios servidores:
 Los servidores **iperf/iperf3** se utilizan para realizar los tests  y el servidor **ssh** para controlar remotamente los equipos y extraer los resultados de las pruebas mediante sftp.
  
 ```
-Desde equipos con Windows puede utilizarse el programa WinSCP para descargar los resultados mediante sftp
-
+Para descargar los resultados:
+ - Equipos con Linux pueden conectar desde el administrador de archivos con sftp://iperf@direccion_ip_equipo_iperftester
+ - Equipos con Windows pueden utilizarse el programa WinSCP 
 ```
 
 ## Perfiles de uso:
