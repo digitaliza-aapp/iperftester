@@ -39,7 +39,7 @@ Tip: Comprobar que no existen filtros intermedios (firewall) que impidan la cone
 ### usuario: root
 Accede a un terminal con permisos de administrador en el cual tiene disponible herramientas como:
 
-::ping iperf iperf3 ssh ftp lftp speedtest-cli iproute2 net-tools bridge-utils lshw iproute2 net-tools  iputils-arping iputils-ping iputils-tracepath  zip unzip bridge-utils vi vim traceroute ethtool lshw ntfs-3g netcat            
+    ping iperf iperf3 ssh ftp lftp speedtest-cli iproute2 net-tools bridge-utils lshw iproute2 net-tools  iputils-arping iputils-ping iputils-tracepath  zip unzip bridge-utils vi vim traceroute ethtool lshw ntfs-3g netcat            
 
 
 ## Caso de uso ##
