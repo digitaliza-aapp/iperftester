@@ -17,7 +17,7 @@ Se desea medir el throughput y calidad de enlaces entre dos sedes:
 - Sede A: red interna 1Gbps/1000Mbps con conexión Macrolan 100Mbps
 - Sede B: red interna 1Gbps/1000Mbps con conexión Macrolan 150Mbps
 
-![](https://github.com/fmbrieva/iperftester/blob/master/use_case/iperftester_internet_300M_00r01.png?raw=true)
+![](https://github.com/fmbrieva/iperftester/blob/master/use_case/iperftester_macrolan_100M_00r01.png?raw=true)
 
 ```
 El ancho de banda máximo es el del enlace mas lento **100Mbps
@@ -59,10 +59,10 @@ Desde equipos con Windows puede utilizarse el programa WinSCP para descargar los
    - Visualizar tráfico E/S en tiempo real utilizando puertos mirror
   
  
+![](https://github.com/fmbrieva/iperftester/blob/master/use_case/iperftester_internet_300M_00r01.png?raw=true)
 
 
 
-![](https://github.com/fmbrieva/iperftester/blob/master/use_case/iperftester_macrolan_100M_00r01.png?raw=true)
 
 ```
 Versión 0: usuario mirror
