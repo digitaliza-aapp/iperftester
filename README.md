@@ -9,7 +9,7 @@ El enlace a examinar se delimita por dos equipos ejecutando **iperftester** dond
 ```
 Pueden realizarse tests de forma automática donde solamente es necesario introducir ip/mascara/gateway
 ```
-Al iniciar el LiveCd **iperftester** se arrancan varios servidores:
+Al iniciar el LiveCd se arrancan varios servidores:
 
  - iperf3 TCP/UDP/STCP puerto 5201
  - iperf TCP puerto 5001
