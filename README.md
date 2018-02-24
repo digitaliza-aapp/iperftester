@@ -14,17 +14,14 @@ Un equipo ejecutanto `iperftester` puede actuar como cliente o servidor.
 Tip: Pueden realizarse tests de forma automática donde solamente es necesario introducir ip/mascara/gateway
 ```
 
-Al iniciar el LiveCd se arrancan varios servidores:
- - iperf3 TCP/UDP/STCP puerto 5201
- - iperf TCP puerto 5001
- - iperf UDP puerto 5002
- - ssh puerto 22
+Al iniciar el LiveCd se arrancan 4 servidores:
+
+ 1. iperf3 TCP/UDP/STCP puerto 5201
+ 2. iperf TCP puerto 5001
+ 3. iperf UDP puerto 5002
+ 4. ssh puerto 22
  
-Los servidores **iperf/iperf3** se utilizan para realizar los tests  y el servidor **ssh** para controlar remotamente los equipos y extraer los resultados de las pruebas mediante sftp.
- 
-```
-Tip: En Windows puede utilizarse el programa WinSCP
-```
+Los servidores **iperf/iperf3** se utilizan para realizar los tests  y el servidor **ssh** para poder controlar remotamente los equipos.
 
 ## Perfiles de uso:
 
