@@ -11,7 +11,7 @@ Un equipo ejecutanto "iperftester" puede actuar como cliente o servidor.
 ![](https://github.com/fmbrieva/iperftester/blob/master/use_case/iperftester_version_00r04.png?raw=true)
 
 ```
-Pueden realizarse tests de forma automática donde solamente es necesario introducir ip/mascara/gateway
+Tip: Pueden realizarse tests de forma automática donde solamente es necesario introducir ip/mascara/gateway
 ```
 
 Al iniciar el LiveCd se arrancan varios servidores:
@@ -55,14 +55,14 @@ Tip: Para acceder mediante un proxy necesita exportar la variables http_proxy y 
 
 Se desea medir el throughput y calidad de enlaces entre dos sedes:
 
-- Sede A: red interna 1Gbps/1000Mbps con conexión Macrolan 100Mbps
-- Sede B: red interna 1Gbps/1000Mbps con conexión Macrolan 150Mbps
+- Sede A: Red interna a 1Gbps/1000Mbps con conexión Macrolan 100Mbps - Red 10.10.10.1/24 Gateway: 10.10.10.1
+- Sede B: Red interna a 1Gbps/1000Mbps con conexión Macrolan 150Mbps - Red 10.10.20.1/24 Gateway: 10.10.20.1
 
 ![](https://github.com/fmbrieva/iperftester/blob/master/use_case/iperftester_macrolan_100M_escenario_00r01.png?raw=true)
 
-
 ### Solución basada en iperftester
-
+Para realizar los tests es necesario iniciar el LiveCd en un equipo de la Sede A y otro de la Sede B
+- Al equipo en la Sede A 
 ![](https://github.com/fmbrieva/iperftester/blob/master/use_case/iperftester_macrolan_100M_00r01.png?raw=true)
 
 ```
