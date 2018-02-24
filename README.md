@@ -70,7 +70,8 @@ Para realizar los tests es necesario iniciar el LiveCd en un equipo de la Sede A
 - Ejecutar la opción **Auto** en cualquiera de las sedes para realizar los test sde forma automática
 - Consultar los resultados con la opción **Ver** o exportar a una unidad externa con la opción **Pendrive**
 
-La opción **Auto** ejecuta los siguientes comandos:
+La opción `Auto` ejecuta los siguientes comandos:
+
 | Commando | Detalle |
 | --- | --- |
 | `ping` | Desde Sede A a Sede B |
