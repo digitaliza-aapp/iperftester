@@ -71,17 +71,18 @@ Para realizar los tests es necesario iniciar el LiveCd en un equipo de la Sede A
 - Consultar los resultados con la opción **Ver** o exportar a una unidad externa con la opción **Pendrive**
 
 La opción **Auto** ejecuta los siguientes comandos:
-
-   1) ping desde Sede A a Sede B
-   2) traceroute desde Sede A a Sede B
-   3) iperf3 TCP dede Sede A a Sede B (Tráfico A color azul)
-   4) iperf3 TCP dede Sede B a Sede A (Tráfico B color rojo)
-   5) iperf3 UDP dede Sede A a Sede B (Tráfico A color azul)
-   6) iperf3 UDP dede Sede B a Sede A (Tráfico B color rojo)
-
-![](https://github.com/fmbrieva/iperftester/blob/master/use_case/iperftester_macrolan_100M_00r01.png?raw=true)
+| Commando | Detalle |
+| --- | --- |
+| `ping` | Desde Sede A a Sede B |
+| `traceroute` | Desde Sede A a Sede B |
+| `iperf3` | Inyectar tráfico TCP desde Sede A a Sede B (Tráfico de color azul) |
+| `iperf3` | Inyectar tráfico TCP desde Sede B a Sede A  (Tráfico de color rojo) |
+| `iperf3` | Inyectar tráfico UDP desde Sede A a Sede B (Tráfico de color azul) |
+| `iperf3` | Inyectar tráfico UDP desde Sede B a Sede A  (Tráfico de color rojo) |
 
 Ejemplo fichero de log con los resultados de la prueba [**20180223_1212_Macrolan_100M.log**](https://www.debian.org/)
+
+![](https://github.com/fmbrieva/iperftester/blob/master/use_case/iperftester_macrolan_100M_00r01.png?raw=true)
 
 
 ## Roadmap
