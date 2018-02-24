@@ -33,20 +33,13 @@ Permite realizar tests de forma interactiva, controlar parametros de ejecución 
 Tip: Comprobar que no existen filtros intermedios (firewall) que impidan la conectividad entre un servidor y un cliente ejecutando tests cambiando el puerto del servidor iperf/iperf3, por ejemplo cambiando el puerto TCP a 3306 puede comprobarse la conectividad con un servidor Mysql.
 ```
 
-### usuario: root
-Accede a un terminal con permisos de administrador en el cual tiene disponible herramientas como:
+### usuario: root     
 
-    ping iperf iperf3 ssh ftp lftp speedtest-cli iproute2 net-tools bridge-utils
-    lshw iproute2 net-tools  iputils-arping iputils-ping iputils-tracepath  zip
-    unzip bridge-utils vi vim traceroute ethtool lshw ntfs-3g netcat            
+Si necesita instalar nuevas herramientas y utiliza un proxy para acceder a internet necesita exportar la variables http_proxy y https_proxy:
 
-Si necesita instalar nuevas herramientas puede utilizar el comando **apt-get install programa_a_instalar**
-
-```
-Tip: Para acceder mediante un proxy necesita exportar la variables http_proxy y https_proxy:
 - export http_proxy="http://usuario:password@ip_del_proxy:puerto_del_proxy"  
 - export https_proxy="http://usuario:password@ip_del_proxy:puerto_del_proxy" 
-```
+
 ## Caso de uso ##
 ### Escenario 
 
