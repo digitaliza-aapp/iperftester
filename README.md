@@ -46,9 +46,9 @@ Accede a un terminal con permisos de administrador en el cual tiene disponible h
 Si necesita instalar nuevas herramientas puede utilizar el comando **apt-get install programa_a_instalar**
 
 ```
-Si accede mediante un proxy necesita exportar la variables http_proxy y https_proxy:
-export http_proxy="http://usuario:password@ip_del_proxy:puerto_del_proxy"  
-export https_proxy="http://usuario:password@ip_del_proxy:puerto_del_proxy" 
+Tip: Para acceder mediante un proxy necesita exportar la variables http_proxy y https_proxy:
+- export http_proxy="http://usuario:password@ip_del_proxy:puerto_del_proxy"  
+- export https_proxy="http://usuario:password@ip_del_proxy:puerto_del_proxy" 
 ```
 ## Caso de uso ##
 ### Escenario 
