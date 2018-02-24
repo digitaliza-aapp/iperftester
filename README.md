@@ -65,17 +65,24 @@ Se desea medir el throughput y calidad de enlaces entre dos sedes:
 El throughput máximo en este escenario será en del enlace con menor ancho de banda (Macrolan de 100Mbps)
 Para realizar los tests es necesario iniciar el LiveCd en un equipo de la Sede A y otro de la Sede B:
 
-- Sede A: Iniciar **iperftester** con el usuario **iperf** asignandole la dirección IP 10.10.10.10 Máscara: 255.255.255.0 Gateway:10.10.10.1
-- Sede B: Iniciar **iperftester** con el usuario **iperf** asignandole la dirección IP 10.10.20.20 Máscara: 255.255.255.0 Gateway:10.10.20.1
-- Sede A: Seleccionar la opción **Auto** para realizar los test de forma automática
-- Sede A: Puede ver los resultados con la opción **Ver** o exportar con la opción **Pendrive** a una unidad externa
+- Iniciar **iperftester** en la Sede A con el usuario **iperf** (IP 10.10.10.10 Máscara: 255.255.255.0 Gateway:10.10.10.1)
+- Iniciar **iperftester** en la Sede B con el usuario **iperf** (IP 10.10.20.20 Máscara: 255.255.255.0 Gateway:10.10.20.1)
+- Ejecutar la opción **Auto** en cualquiera de las sedes para realizar los test sde forma automática
+- Consultar los resultados con la opción **Ver** o exportar a una unidad externa con la opción **Pendrive**
 
 Ejemplo fichero de log con los resultados de la prueba [**20180223_1212_Macrolan_100M.log**](https://www.debian.org/)
 
 ![](https://github.com/fmbrieva/iperftester/blob/master/use_case/iperftester_macrolan_100M_00r01.png?raw=true)
 
 ```
-El ancho de banda máximo es el del enlace mas lento **100Mbps**
+La opción "Auto" ejecuta los siguientes comandos:
+
+1) ping desde Sede A a Sede B
+2) traceroute desde Sede A a Sede B
+3) iperf3 TCP dede Sede A a Sede B (Tráfico A color azul)
+4) iperf3 TCP dede Sede B a Sede A (Tráfico B color rojo)
+5) iperf3 UDP dede Sede A a Sede B (Tráfico A color azul)
+6) iperf3 UDP dede Sede B a Sede A (Tráfico B color rojo)
 ```
 
 
