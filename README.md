@@ -30,7 +30,7 @@ Desde equipos con Windows puede utilizarse el programa WinSCP para descargar los
 Permite realizar tests de forma interactiva, controlar parametros de ejecución (puertos, tiempo, intervalo, etc.), consultar resultados y exportarlos a unidades externas (pendrive).
 
 ```
-Tip: Es posible comprobar que no existen filtros intermedios (firewall) que impidan la conectividad entre un servidor y un cliente ejecutando tests cambiando el puerto del servidor iperf/iperf3, por ejemplo cambiando el puerto TCP a 3306 puede comprobarse la conectividad con un aervidor Mysql.
+Tip: mprobar que no existen filtros intermedios (firewall) que impidan la conectividad entre un servidor y un cliente ejecutando tests cambiando el puerto del servidor iperf/iperf3, por ejemplo cambiando el puerto TCP a 3306 puede comprobarse la conectividad con un aervidor Mysql.
 ```
 
 ### usuario: root
