@@ -70,11 +70,6 @@ Para realizar los tests es necesario iniciar el LiveCd en un equipo de la Sede A
 - Ejecutar la opción **Auto** en cualquiera de las sedes para realizar los test sde forma automática
 - Consultar los resultados con la opción **Ver** o exportar a una unidad externa con la opción **Pendrive**
 
-Ejemplo fichero de log con los resultados de la prueba [**20180223_1212_Macrolan_100M.log**](https://www.debian.org/)
-
-![](https://github.com/fmbrieva/iperftester/blob/master/use_case/iperftester_macrolan_100M_00r01.png?raw=true)
-
-```
 La opción "Auto" ejecuta los siguientes comandos:
 
 1) ping desde Sede A a Sede B
@@ -83,14 +78,10 @@ La opción "Auto" ejecuta los siguientes comandos:
 4) iperf3 TCP dede Sede B a Sede A (Tráfico B color rojo)
 5) iperf3 UDP dede Sede A a Sede B (Tráfico A color azul)
 6) iperf3 UDP dede Sede B a Sede A (Tráfico B color rojo)
-```
 
+![](https://github.com/fmbrieva/iperftester/blob/master/use_case/iperftester_macrolan_100M_00r01.png?raw=true)
 
-
-
-
-
-
+Ejemplo fichero de log con los resultados de la prueba [**20180223_1212_Macrolan_100M.log**](https://www.debian.org/)
 
 
 ## Roadmap
@@ -100,20 +91,8 @@ La opción "Auto" ejecuta los siguientes comandos:
 - Iperftester LiveCD
    - Medir ancho de banda y calidad de enlaces
    - Automatizar pruebas y crear ficheros de log con los resultados.
-   - Visualizar tráfico E/S en tiempo real utilizando puertos mirror
-  
  
 ![](https://github.com/fmbrieva/iperftester/blob/master/use_case/iperftester_internet_300M_00r01.png?raw=true)
-
-
-
-
-```
-Versión 0: usuario mirror
-```
-
-
-
 
 ### Versión 1:
 
@@ -128,8 +107,7 @@ Versión 0: usuario mirror
 - Modo sonda / colector
 - Colector Sflow para visualizar tráfico E/S en tiempo real 
 - Monitorizar sondas mediante (Icinga/Nagios)
-- Paneles con tráfico E/S (Grafana y Mediawiki)
-  https://github.com/fmbrieva/mediawiki-grafana
+- Paneles con tráfico E/S (Grafana y Mediawiki) https://github.com/fmbrieva/mediawiki-grafana
 - Herramienta Web para centralizar resultados y controlar sondas
 - Facilitar despliegue de sondas (Docker)
 
