@@ -71,9 +71,6 @@ Si seleccionamos la opción `Auto` en la Sede A se ejecutarán los siguientes co
 | `iperf3` | Inyectar tráfico UDP desde Sede A a Sede B (Tráfico de color azul) |
 | `iperf3` | Inyectar tráfico UDP desde Sede B a Sede A  (Tráfico de color rojo) |
 
-1. First list item
-   - First nested list item
-     - Second nested list item
      
 Ejemplo fichero de log con los resultados de la prueba [**20180223_1212_Macrolan_100M.log**](https://www.debian.org/)
 
