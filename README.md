@@ -7,7 +7,7 @@ El enlace a examinar se delimita por dos equipos ejecutando **iperftester** dond
 ![](https://github.com/fmbrieva/iperftester/blob/master/use_case/iperftester_version_00r04.png?raw=true)
 
 ```
-Versión 0: usuario iperf 
+Pueden realizarse pruebas de forma automática donde solamente es necesario introducir ip/mascara/gateway en cada uno de los equipos 
 ```
 Al iniciar el LiveCd **iperftester** se arrancan varios servidores:
  - iperf3 TCP/UDP/STCP puerto 5201
