@@ -5,7 +5,7 @@ Iperftester es una distribución liveCD basada en [**Debian**](https://www.debia
 El enlace a examinar se delimita por dos equipos ejecutando `iperftester` donde uno actua como cliente y otro como servidor.
 
 ```
-Un equipo ejecutanto "iperftester" puede actuar como cliente o servidor.
+Un equipo ejecutanto `iperftester` puede actuar como cliente o servidor.
 ```
 
 ![](https://github.com/fmbrieva/iperftester/blob/master/use_case/iperftester_version_00r04.png?raw=true)
