@@ -55,14 +55,23 @@ Tip: Para acceder mediante un proxy necesita exportar la variables http_proxy y 
 
 Se desea medir el throughput y calidad de enlaces entre dos sedes:
 
-- Sede A: Red interna a 1Gbps/1000Mbps con conexión Macrolan 100Mbps - Red 10.10.10.1/24 Gateway: 10.10.10.1
-- Sede B: Red interna a 1Gbps/1000Mbps con conexión Macrolan 150Mbps - Red 10.10.20.1/24 Gateway: 10.10.20.1
+- Sede A: Red 10.10.10.1 Máscara 255.255.255.0 Gateway: 10.10.10.1 a 1Gbps/1000Mbps con conexión Macrolan 100Mbps 
+- Sede B: Red 10.10.20.1 Máscara 255.255.255.0 Gateway: 10.10.20.1 a 1Gbps/1000Mbps con conexión Macrolan 150Mbps  
 
 ![](https://github.com/fmbrieva/iperftester/blob/master/use_case/iperftester_macrolan_100M_escenario_00r01.png?raw=true)
 
 ### Solución basada en iperftester
-Para realizar los tests es necesario iniciar el LiveCd en un equipo de la Sede A y otro de la Sede B
-- Al equipo en la Sede A 
+
+El throughput máximo en este escenario será en del enlace con menor ancho de banda (Macrolan de 100Mbps)
+Para realizar los tests es necesario iniciar el LiveCd en un equipo de la Sede A y otro de la Sede B:
+
+- Sede A: Iniciar **iperftester** con el usuario **iperf** asignandole la dirección IP 10.10.10.10 Máscara: 255.255.255.0 Gateway:10.10.10.1
+- Sede B: Iniciar **iperftester** con el usuario **iperf** asignandole la dirección IP 10.10.20.20 Máscara: 255.255.255.0 Gateway:10.10.20.1
+- Sede A: Seleccionar la opción **Auto** para realizar los test de forma automática
+- Sede A: Puede ver los resultados con la opción **Ver** o exportar con la opción **Pendrive** a una unidad externa
+
+Ejemplo fichero de log con los resultados de la prueba [**20180223_1212_Macrolan_100M.log**](https://www.debian.org/)
+
 ![](https://github.com/fmbrieva/iperftester/blob/master/use_case/iperftester_macrolan_100M_00r01.png?raw=true)
 
 ```
