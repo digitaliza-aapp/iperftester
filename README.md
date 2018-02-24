@@ -7,7 +7,20 @@ El enlace a examinar se delimita por dos equipos ejecutando **iperftester** dond
 ![](https://github.com/fmbrieva/iperftester/blob/master/use_case/iperftester_version_00r04.png?raw=true)
 
 ```
-Pueden realizarse pruebas de forma automática donde solamente es necesario introducir ip/mascara/gateway
+Pueden realizarse tests de forma automática donde solamente es necesario introducir ip/mascara/gateway
+```
+Al iniciar el LiveCd **iperftester** se arrancan varios servidores:
+
+ - iperf3 TCP/UDP/STCP puerto 5201
+ - iperf TCP puerto 5001
+ - iperf UDP puerto 5002
+ - ssh puerto 22
+ 
+Los servidores **iperf/iperf3** se utilizan para realizar los tests  y el servidor **ssh** para controlar remotamente los equipos y extraer los resultados de las pruebas mediante sftp.
+ 
+```
+Desde equipos con Windows puede utilizarse el programa WinSCP para descargar los resultados mediante sftp
+
 ```
 
 ## Caso de uso A ##
@@ -20,23 +33,12 @@ Se desea medir el throughput y calidad de enlaces entre dos sedes:
 ![](https://github.com/fmbrieva/iperftester/blob/master/use_case/iperftester_macrolan_100M_00r01.png?raw=true)
 
 ```
-El ancho de banda máximo es el del enlace mas lento **100Mbps
+El ancho de banda máximo es el del enlace mas lento **100Mbps**
 ```
 
 
 
-Al iniciar el LiveCd **iperftester** se arrancan varios servidores:
- - iperf3 TCP/UDP/STCP puerto 5201
- - iperf TCP puerto 5001
- - iperf UDP puerto 5002
- - ssh puerto 22
- 
- El servidor ssh permite controlar remotamente los equipos y extraer los resultados de las pruebas mediante sftp.
- 
-```
-Desde equipos con Windows puede utilizarse el programa WinSCP para descargar los resultados
 
-```
 
 ## Perfiles de uso:
 
