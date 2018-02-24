@@ -7,8 +7,24 @@ El enlace a examinar se delimita por dos equipos ejecutando **iperftester** dond
 ![](https://github.com/fmbrieva/iperftester/blob/master/use_case/iperftester_version_00r04.png?raw=true)
 
 ```
-Pueden realizarse pruebas de forma automática donde solamente es necesario introducir ip/mascara/gateway en cada uno de los equipos 
+Pueden realizarse pruebas de forma automática donde solamente es necesario introducir ip/mascara/gateway
 ```
+
+## Caso de uso A ##
+
+Se desea medir el throughput y calidad de enlaces entre dos sedes:
+
+- Sede A: red interna 1Gbps/1000Mbps con conexión Macrolan 100Mbps
+- Sede B: red interna 1Gbps/1000Mbps con conexión Macrolan 150Mbps
+
+![](https://github.com/fmbrieva/iperftester/blob/master/use_case/iperftester_internet_300M_00r01.png?raw=true)
+
+```
+El ancho de banda máximo es el del enlace mas lento **100Mbps
+```
+
+
+
 Al iniciar el LiveCd **iperftester** se arrancan varios servidores:
  - iperf3 TCP/UDP/STCP puerto 5201
  - iperf TCP puerto 5001
@@ -24,11 +40,14 @@ Desde equipos con Windows puede utilizarse el programa WinSCP para descargar los
 
 ## Perfiles de uso:
 
-### iperftester (usuario: iperf)
+### usuario: iperf
 
-### mirroring (usuario: mirror)
 
-### Experto (usuario: root)
+
+### usuario: root
+
+
+
 
 ## Roadmap
 
@@ -49,11 +68,6 @@ Desde equipos con Windows puede utilizarse el programa WinSCP para descargar los
 Versión 0: usuario mirror
 ```
 
-![](https://github.com/fmbrieva/iperftester/blob/master/use_case/iperftester_internet_300M_00r01.png?raw=true)
-
-```
-Versión 0: usuario mirror
-```
 
 
 
