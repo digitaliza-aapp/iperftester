@@ -37,12 +37,15 @@ Tip: Comprobar que no existen filtros intermedios (firewall) que impidan la cone
 Permite controlar los equipo
 
 
-## Caso de uso A ##
+## Caso de uso ##
+### Escenario 
 
 Se desea medir el throughput y calidad de enlaces entre dos sedes:
 
 - Sede A: red interna 1Gbps/1000Mbps con conexión Macrolan 100Mbps
 - Sede B: red interna 1Gbps/1000Mbps con conexión Macrolan 150Mbps
+
+### Solución basada en iperftester
 
 ![](https://github.com/fmbrieva/iperftester/blob/master/use_case/iperftester_macrolan_100M_00r01.png?raw=true)
 
