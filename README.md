@@ -23,9 +23,7 @@ Al iniciar el LiveCd se arrancan varios servidores:
 Los servidores **iperf/iperf3** se utilizan para realizar los tests  y el servidor **ssh** para controlar remotamente los equipos y extraer los resultados de las pruebas mediante sftp.
  
 ```
-Para descargar los resultados:
- - Equipos con Linux pueden conectar desde el administrador de archivos con sftp://iperf@direccion_ip_equipo_iperftester
- - Equipos con Windows pueden utilizarse el programa WinSCP 
+Tip: En Windows puede utilizarse el programa WinSCP
 ```
 
 ## Perfiles de uso:
@@ -39,7 +37,9 @@ Tip: Comprobar que no existen filtros intermedios (firewall) que impidan la cone
 ```
 
 ### usuario: root
-Permite controlar los equipo
+Accede a un terminal con permisos de administrador en el cual tiene disponible herramientas como:
+
+::ping iperf iperf3 ssh ftp lftp speedtest-cli iproute2 net-tools bridge-utils lshw iproute2 net-tools  iputils-arping iputils-ping iputils-tracepath  zip unzip bridge-utils vi vim traceroute ethtool lshw ntfs-3g netcat            
 
 
 ## Caso de uso ##
