@@ -72,12 +72,12 @@ Para realizar los tests es necesario iniciar el LiveCd en un equipo de la Sede A
 
 La opción "Auto" ejecuta los siguientes comandos:
 
-# ping desde Sede A a Sede B
-2) traceroute desde Sede A a Sede B
-3) iperf3 TCP dede Sede A a Sede B (Tráfico A color azul)
-4) iperf3 TCP dede Sede B a Sede A (Tráfico B color rojo)
-5) iperf3 UDP dede Sede A a Sede B (Tráfico A color azul)
-6) iperf3 UDP dede Sede B a Sede A (Tráfico B color rojo)
+   1) ping desde Sede A a Sede B
+   2) traceroute desde Sede A a Sede B
+   3) iperf3 TCP dede Sede A a Sede B (Tráfico A color azul)
+   4) iperf3 TCP dede Sede B a Sede A (Tráfico B color rojo)
+   5) iperf3 UDP dede Sede A a Sede B (Tráfico A color azul)
+   6) iperf3 UDP dede Sede B a Sede A (Tráfico B color rojo)
 
 ![](https://github.com/fmbrieva/iperftester/blob/master/use_case/iperftester_macrolan_100M_00r01.png?raw=true)
 
