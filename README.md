@@ -91,8 +91,6 @@ Ejemplo fichero de log con los resultados de la prueba [**20180223_1212_Macrolan
 - Iperftester LiveCD
    - Medir ancho de banda y calidad de enlaces
    - Automatizar pruebas y crear ficheros de log con los resultados.
- 
-![](https://github.com/fmbrieva/iperftester/blob/master/use_case/iperftester_internet_300M_00r01.png?raw=true)
 
 ### Versión 1:
 
