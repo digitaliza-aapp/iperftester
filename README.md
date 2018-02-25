@@ -12,21 +12,21 @@ Un equipo ejecutanto 'iperftester' puede actuar como cliente o servidor.
 
 ![](https://github.com/fmbrieva/iperftester/blob/master/use_case/iperftester_version_00r04.png?raw=true)
 
-```
-Tip: Pueden realizarse tests de forma automática donde solamente es necesario introducir ip/mascara/gateway
-```
-
-Al iniciar el `iperftester` se arrancan 4 servidores en los siguientes puertos:
+Al iniciar `iperftester` se arrancan 4 servidores en los siguientes puertos:
 
  
 | Commando | Detalle | Puerto |
 | --- | --- | ---- |
 | `iperf3` | Servidor TCP/UDP/STCP | **5201** |
-| `iperf` | Servidor TCP/UDP/STCP | **5001** |
-| `iperf` | Servidor TCP/UDP/STCP | **5002** |
-| `ssh` | Servidor ssh | **22** |
+| `iperf` | Servidor TCP | **5001** |
+| `iperf` | Servidor UDP | **5002** |
+| `ssh` | Servidor SSH | **22** |
  
 Los servidores **iperf/iperf3** se utilizan para realizar los tests  y el servidor **ssh** para poder controlar remotamente los equipos.
+
+```
+Pueden realizarse tests de forma automática donde solamente es necesario introducir ip/mascara/gateway
+```
 
 ## Perfiles de uso:
 
