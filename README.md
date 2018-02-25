@@ -77,7 +77,9 @@ Ejemplo fichero de log con los resultados de la prueba [**20180223_1212_Macrolan
 
 ![](https://github.com/fmbrieva/iperftester/blob/master/use_case/iperftester_macrolan_100M_00r01.png?raw=true)
 
-### Otros usos
+## Otros usos
+
+### Cambio de puertos
 
 Es posible comprobar la conectividad entre dos puntos mediante un puerto, por ejemplo arrancando un servidor `iperf`/`iperf3` en el puerto `3306` podemos comprobar que no existen filtros intermedios (firewall) entre un equipo y un servidor Mysql.
 
