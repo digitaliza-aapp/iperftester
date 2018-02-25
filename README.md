@@ -13,7 +13,6 @@ Un equipo ejecutanto 'iperftester' puede actuar como cliente o servidor.
 ![](https://github.com/fmbrieva/iperftester/blob/master/use_case/iperftester_version_00r04.png?raw=true)
 
 Al iniciar `iperftester` se arrancan 4 varios programas:
-
  
 | Comando | Programa | Puerto |
 | --- | --- | ---- |
@@ -34,9 +33,8 @@ Pueden realizarse tests de forma automática donde solamente es necesario introd
 
 Permite realizar tests de forma interactiva, controlar parametros de ejecución (puertos, tiempo, intervalo, etc.), consultar resultados y exportarlos a unidades externas (pendrive).
 
-```
-Tip: Comprobar que no existen filtros intermedios (firewall) que impidan la conectividad entre un servidor y un cliente ejecutando tests cambiando el puerto del servidor iperf/iperf3, por ejemplo cambiando el puerto TCP a 3306 puede comprobarse la conectividad con un servidor Mysql.
-```
+
+
 
 ### usuario: root     
 
@@ -81,6 +79,9 @@ Ejemplo fichero de log con los resultados de la prueba [**20180223_1212_Macrolan
 
 ![](https://github.com/fmbrieva/iperftester/blob/master/use_case/iperftester_macrolan_100M_00r01.png?raw=true)
 
+### Otros usos
+
+Los puertos de los servidores `iperf`/`iperf3` pueden cambiarse para realizar pruebas, por ejemplo asignando el puerto TCP 3306 puede comprobar la conectividad entre un equipo y un servidor Mysql.
 
 ## Roadmap
 
