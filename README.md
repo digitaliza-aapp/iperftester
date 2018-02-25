@@ -16,7 +16,7 @@ Al iniciar `iperftester` se arrancan 4 programas:
  
 | Comando | Programa | Puerto |
 | --- | --- | ---- |
-| `iperf3` | Programa Cliente-Servidor para crear flujos de datos `TCP/UDP/STCP` | **5201** |
+| `iperf3` | Programa Cliente-Servidor para crear flujos de datos `TCP/UDP/SCTP` | **5201** |
 | `iperf` | Programa Cliente-Servidor para crear flujos de datos  `TCP` | **5001** |
 | `iperf` | Programa Cliente-Servidor para crear flujos de datos `UDP` | **5002** |
 | `ssh` | Programa Servidor para acceder a maquinas remotas mediante `SSH` | **22** |
