@@ -21,7 +21,7 @@ Al iniciar el `iperftester` se arrancan 4 servidores en los siguientes puertos:
  
 | Commando | Detalle | Puerto |
 | --- | --- | ---- |
-| `iperf3` | Servidor TCP/UDP/STCP | 5201 |
+| `iperf3` | Servidor TCP/UDP/STCP | **5201** |
  
 | Servidor | Detalle | Puerto |
 | `iperf3` | Servidor TCP/UDP/STCP | **5201** |
