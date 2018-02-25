@@ -56,11 +56,12 @@ Se desea medir el throughput y calidad de enlaces entre dos sedes:
 ### Solución basada en iperftester
 
 El throughput máximo en este escenario será en del enlace con menor ancho de banda (Macrolan de 100Mbps)
+
 Para realizar los tests es necesario iniciar el LiveCd en un equipo de la Sede A y otro de la Sede B:
 
 1. Iniciar **iperftester** en la Sede A con el usuario **iperf** 
 2. Iniciar **iperftester** en la Sede B con el usuario **iperf** 
-3. Ejecutar la opción **Auto** en cualquiera de las sedes para realizar los test sde forma automática
+3. Ejecutar la opción **Auto** en cualquiera de las sedes para realizar los tests de forma automática
 4. Consultar los resultados con la opción **Ver** o exportar a una unidad externa con la opción **Pendrive**
 
 Si seleccionamos la opción `Auto` en la Sede A se ejecutarán los siguientes comandos:
