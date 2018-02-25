@@ -87,7 +87,7 @@ Es posible comprobar la conectividad entre dos puntos mediante un puerto, por ej
 
 ### Version 0 (febrero 2018):
 
-- Iperftester Liveq
+- Iperftester Live
 - Medir ancho de banda y calidad de enlaces
 - Automatizar pruebas y crear ficheros de log con los resultados.
 
