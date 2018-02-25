@@ -22,7 +22,7 @@ Al iniciar `iperftester` se arrancan 4 varios programas:
 | `iperf` | Programa Cliente-Servidor para crear flujos de datos `UDP` | **5002** |
 | `ssh` | Programa Servidor para acceder a maquinas remotas mediante `SSH` | **22** |
  
-Los servidores `**iperf**`/`**iperf3**` se utilizan para realizar los tests  y el servidor `**ssh**` para poder controlar remotamente los equipos `iperftester`.
+Los servidores `iperf`/`iperf3` se utilizan para realizar los tests  y el servidor `ssh` para poder controlar remotamente los equipos que están ejecutando `iperftester`.
 
 ```
 Pueden realizarse tests de forma automática donde solamente es necesario introducir ip/mascara/gateway
