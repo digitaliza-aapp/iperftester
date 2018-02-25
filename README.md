@@ -19,8 +19,9 @@ Tip: Pueden realizarse tests de forma automática donde solamente es necesario i
 Al iniciar el `iperftester` se arrancan 4 servidores en los siguientes puetos:
 
  
-| Servidor | Detalle Puerto |
-| `iperf3` | Servidor TCP/UDP/STCP  **5201** |
+| Commando | Detalle |
+| --- | --- |
+| `ping` | Desde Sede A a Sede B |
  
 | Servidor | Detalle | Puerto |
 | `iperf3` | Servidor TCP/UDP/STCP | **5201** |
