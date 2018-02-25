@@ -16,12 +16,12 @@ Un equipo ejecutanto 'iperftester' puede actuar como cliente o servidor.
 Tip: Pueden realizarse tests de forma automática donde solamente es necesario introducir ip/mascara/gateway
 ```
 
-Al iniciar el `iperftester` se arrancan 4 servidores en los siguientes puetos:
+Al iniciar el `iperftester` se arrancan 4 servidores en los siguientes puertos:
 
  
-| Commando | Detalle |
-| --- | --- |
-| `ping` | Desde Sede A a Sede B |
+| Commando | Detalle | Puerto |
+| --- | --- | ---- |
+| `iperf3` | Servidor TCP/UDP/STCP | 5201 |
  
 | Servidor | Detalle | Puerto |
 | `iperf3` | Servidor TCP/UDP/STCP | **5201** |
