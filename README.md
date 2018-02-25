@@ -12,10 +12,10 @@ Un equipo ejecutanto 'iperftester' puede actuar como cliente o servidor.
 
 ![](https://github.com/fmbrieva/iperftester/blob/master/use_case/iperftester_version_00r04.png?raw=true)
 
-Al iniciar `iperftester` se arrancan 4 servidores en los siguientes puertos:
+Al iniciar `iperftester` se arrancan 4 varios programas:
 
  
-| Commando | Detalle | Puerto |
+| Comando | Programa | Puerto |
 | --- | --- | ---- |
 | `iperf3` | Programa Cliente-Servidor para crear flujos de datos `TCP/UDP/STCP` | **5201** |
 | `iperf` | Programa Cliente-Servidor para crear flujos de datos  `TCP` | **5001** |
