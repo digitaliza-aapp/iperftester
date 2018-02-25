@@ -2,14 +2,12 @@
 
 Iperftester es una distribución live basada en [**Debian**](https://www.debian.org/) para medir el ancho de banda (throughput) y calidad de enlaces de red mediante [**iperf**](https://sourceforge.net/projects/iperf2/) / [**iperf3**](https://github.com/esnet/iperf#iperf3--a-tcp-udp-and-sctp-network-bandwidth-measurement-tool) 
 
-```
 Puede arrancar la [**Imagen Iso**](https://www.debian.org/) desde un DVD, CD o Pendrive
-```
 
 El enlace a examinar se delimita por dos equipos ejecutando `iperftester` donde uno actua como cliente y otro como servidor.
 
 ```
-Un equipo ejecutanto `iperftester` puede actuar como cliente o servidor.
+Un equipo ejecutanto 'iperftester' puede actuar como cliente o servidor.
 ```
 
 ![](https://github.com/fmbrieva/iperftester/blob/master/use_case/iperftester_version_00r04.png?raw=true)
@@ -18,12 +16,13 @@ Un equipo ejecutanto `iperftester` puede actuar como cliente o servidor.
 Tip: Pueden realizarse tests de forma automática donde solamente es necesario introducir ip/mascara/gateway
 ```
 
-Al iniciar el LiveCd se arrancan 4 servidores:
-
- 1. iperf3 TCP/UDP/STCP puerto 5201
- 2. iperf TCP puerto 5001
- 3. iperf UDP puerto 5002
- 4. ssh puerto 22
+Al iniciar el `iperftester` se arrancan 4 servidores en los siguientes puetos
+ 
+| Servidor | Detalle | Puerto |
+| `iperf3` | Servidor TCP/UDP/STCP | **5201** |
+| `iperf` | Servidor TCP/UDP/STCP | **5001** |
+| `iperf` | Servidor TCP/UDP/STCP | **5002** |
+| `ssh` | Servidor ssh | **22** |
  
 Los servidores **iperf/iperf3** se utilizan para realizar los tests  y el servidor **ssh** para poder controlar remotamente los equipos.
 
