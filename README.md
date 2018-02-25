@@ -38,7 +38,7 @@ Permite realizar tests de forma interactiva, controlar parametros de ejecución 
 
 ### usuario: root     
 
-Si necesita instalar nuevas herramientas y utiliza un proxy para acceder a internet necesita exportar la variables http_proxy y https_proxy:
+Si necesita instalar nuevas herramientas y utiliza un proxy para acceder a internet necesita exportar la variables `http_proxy` y `https_proxy`:
 
 - export http_proxy="http://usuario:password@ip_del_proxy:puerto_del_proxy"  
 - export https_proxy="http://usuario:password@ip_del_proxy:puerto_del_proxy" 
