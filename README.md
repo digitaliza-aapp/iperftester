@@ -61,8 +61,8 @@ El `throughput` máximo en este escenario será el del enlace con menor ancho de
 
 Para realizar los tests es necesario iniciar `iperftester` en un equipo de la Sede A y otro de la Sede B:
 
-1. Iniciar **iperftester** en la Sede A con el usuario **iperf** 
-2. Iniciar **iperftester** en la Sede B con el usuario **iperf** 
+1. Iniciar **iperftester** en la Sede A con el usuario **iperf** (Configurar Ip/Máscara/Gateway)
+2. Iniciar **iperftester** en la Sede B con el usuario **iperf** (Configurar Ip/Máscara/Gateway)
 3. Ejecutar la opción **Auto** en cualquiera de las sedes para realizar los tests de forma automática
 4. Consultar los resultados con la opción **Ver** o exportar a una unidad externa con la opción **Pendrive**
 
