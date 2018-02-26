@@ -70,7 +70,10 @@ Para realizar los tests es necesario iniciar `iperftester` en un equipo de la S
 3. Ejecutar la opción **Auto** en cualquiera de las sedes para realizar los tests de forma automática
 4. Consultar los resultados con la opción **Ver** o exportar a una unidad externa con la opción **Pendrive**
 
-Si seleccionamos la opción `Auto` en la Sede A se ejecutarán los siguientes comandos:
+
+![](use_case/iperftester_macrolan_100M_00r01.png)
+
+Al seleccionar la opción `Auto` en la Sede A se ejecutarán los siguientes comandos:
 
 | Commando | Detalle |
 | --- | --- |
@@ -80,11 +83,8 @@ Si seleccionamos la opción `Auto` en la Sede A se ejecutarán los siguientes co
 | `iperf3` | Inyectar tráfico TCP desde Sede B a Sede A  (Tráfico de color rojo) |
 | `iperf3` | Inyectar tráfico UDP desde Sede A a Sede B (Tráfico de color azul) |
 | `iperf3` | Inyectar tráfico UDP desde Sede B a Sede A  (Tráfico de color rojo) |
-
-     
+   
 Ejemplo de un fichero de log obtenido en la Sede A con los resultados de un test realizado con la opción **Auto** [**20180222_122551_Macrolan_100M.log**](use_case/20180222_122551_Macrolan_100M.log)
-
-![](use_case/iperftester_macrolan_100M_00r01.png)
 
 ## Otros usos
 
