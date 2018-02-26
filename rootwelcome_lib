@@ -1,0 +1,103 @@
+############################################################################################
+#                                                                                          #
+# rootwelcome_lib : Libreria para rootwelcome                                              #
+#                                                                                          #
+#------------------------------------------------------------------------------------------#
+#                                                                                          #
+# Versión       : 01r00                                                                    #
+# Fecha         : 3/febrero/2018                                                           #
+# Autor         : Felipe Muñoz Brieva - fmbrieva@gmail.com                                 #
+#                                                                                          #
+#------------------------------------------------------------------------------------------#
+#                                                                                          #
+# Modificaciones:                                                                          #
+#                                                                                          #
+# --01r00--       Version inicial                                                          #
+# 03/02/2018                                                                               #
+#   Felipe                                                                                 #
+#                                                                                          #
+############################################################################################
+
+### Equipo local
+HOST_LOCAL_DNS=8.8.8.8
+
+### Rutas ------------------------------------------------------------------------------------
+
+FICHERO_HOST_LOCAL_DNS=$RUTA_TEMPORAL/iperftester_host_local_dns
+
+### Recuperar parametros de ficheros temporales
+function actualizarParametros()
+{  
+
+  if [ -f $FICHERO_HOST_LOCAL_DNS ];
+   then
+
+     leerValor hostLocalDns $FICHERO_HOST_LOCAL_DNS; if [ -n $tmp ]; then hostLocalDns=$tmp; fi
+
+   else 
+
+     hostLocalDns=$HOST_LOCAL_DNS
+
+     echo "hostLocalDns $hostLocalDns"                                 > $FICHERO_HOST_LOCAL_DNS
+
+  fi
+
+}
+
+### Leer parametros de red (Dns) 
+function leerConfigurarHostDns()
+{
+
+    actualizarParametros
+
+    leerValorIp "Servidor DNS" "Servidor DNS (Solo si necesita resolución de nombres)" 0 60 "$hostLocalDns" "s"
+    if [ "$valor" == "$BOTON_CANCELAR" ]; then return; fi
+    hostLocalDns=$valor
+
+    ### Configurar DNS 
+   `sudo echo nameserver $hostLocalDns > /etc/resolv.conf`
+   
+    ### Grabar los parametros en un fichero local
+    echo "hostLocalDns $hostLocalDns"                                         > $FICHERO_HOST_LOCAL_DNS
+
+}
+
+### Notificaciones ---------------------------------------------------------------------------
+
+### Mensaje inicial
+function mensajeInicialRoot()
+{
+
+     # Crear el fichero vacio
+     >$FICHERO_TEMPORAL
+
+     echo "                                                                                    "  > $FICHERO_TEMPORAL
+     echo "    Herramientas disponibles en el LiveCD                                           " >> $FICHERO_TEMPORAL
+     echo "    -------------------------------------                                           " >> $FICHERO_TEMPORAL
+     echo "                                                                                    " >> $FICHERO_TEMPORAL
+     echo "     iperf iperf3 ssh ftp lftp speedtest-cli iproute2 net-tools bridge-utils lshw   " >> $FICHERO_TEMPORAL
+     echo "     iproute2 net-tools  iputils-arping iputils-ping iputils-tracepath  zip unzip   " >> $FICHERO_TEMPORAL
+     echo "     bridge-utils vi vim traceroute ethtool lshw ntfs-3g netcat                     " >> $FICHERO_TEMPORAL
+     echo "                                                                                    " >> $FICHERO_TEMPORAL
+     echo "                                                                                    " >> $FICHERO_TEMPORAL
+     echo "    Si necesita instalar nuevas herramientas y utiliza un proxy con autenticación   " >> $FICHERO_TEMPORAL
+     echo "    debe ejecutar los siguientes comandos:                                          " >> $FICHERO_TEMPORAL
+     echo "                                                                                    " >> $FICHERO_TEMPORAL
+     echo "      export http_proxy=\"http://usuario:password@ip_del_proxy:puerto_del_proxy\"   " >> $FICHERO_TEMPORAL
+     echo "      export https_proxy=\"http://usuario:password@ip_del_proxy:puerto_del_proxy\"  " >> $FICHERO_TEMPORAL
+     echo "                                                                                    " >> $FICHERO_TEMPORAL
+     echo "                                                                                    " >> $FICHERO_TEMPORAL
+     echo "    -----------------------------------------------------------------------------   " >> $FICHERO_TEMPORAL
+     echo "                                                                                    " >> $FICHERO_TEMPORAL
+     echo "    Exención de responsabilidad:                                                    " >> $FICHERO_TEMPORAL
+     echo "                                                                                    " >> $FICHERO_TEMPORAL
+     echo "    La responsabilidad de los daños y perjuicios de  cualquier naturaleza que       " >> $FICHERO_TEMPORAL
+     echo "    que pudiera  derivarse del uso del LiveCD son del usuario y además deberá       " >> $FICHERO_TEMPORAL
+     echo "    estar autorizado para su uso en su red de datos.                                " >> $FICHERO_TEMPORAL
+     echo "                                                                                    " >> $FICHERO_TEMPORAL
+     echo "                                                                                    " >> $FICHERO_TEMPORAL
+
+     dialog --stdout --backtitle "$PROGRAMA $VERSION" --textbox $FICHERO_TEMPORAL 0 0 --exit-label "Terminal de comandos"
+
+}
+
