@@ -98,8 +98,8 @@ Se han creado 3 opciones de arranque:
 
 - Iperftester 
 - Iperftester (PAE vga=794) 
--- **PAE**  Equipos con mas de 3Gb de memoria RAM
--- **vga=794** cambia resolución de pantalla a 1280x1024 y 16 bits
+ - **PAE**  Equipos con mas de 3Gb de memoria RAM
+ - **vga=794** cambia resolución de pantalla a 1280x1024 y 16 bits
 - Detectar Hardware
 
 ```
@@ -110,10 +110,6 @@ Si utiliza software de virtualización para arrancar la imagen ISO debe configur
 ### Resoluciones vga
 
 A continuación de detallan algunas `resoluciones vga` que pueden seleccionarse al arrancar la imagen ISO
-
-```
-La segunda opción de arranque configura utiliza un kernel PAE con vga=794
-```
 
 | Depth | 800×600 | 1024×768 | 1152×864 | 1280×1024 | 1600×1200 |
 | ---- | ---- | ---- | ---- | ---- | ---- |  
