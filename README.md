@@ -96,11 +96,11 @@ Es posible comprobar la conectividad entre dos puntos mediante un puerto, por ej
 
 Se han creado 3 opciones de arranque:
 
-- Iperftester 
-- Iperftester (PAE vga=794) 
- - **PAE**  Equipos con mas de 3Gb de memoria RAM
- - **vga=794** cambia resolución de pantalla a 1280x1024 y 16 bits
-- Detectar Hardware
+ - Iperftester 
+ - Iperftester (PAE vga=794) 
+  - **PAE**  Equipos con mas de 3Gb de memoria RAM
+  - **vga=794** cambia resolución de pantalla a 1280x1024 y 16 bits
+ - Detectar Hardware
 
 ```
 Para cambiar parámetros (ejemplo vga=798) debe utilizar el tabulador sobre la opción de arranque
