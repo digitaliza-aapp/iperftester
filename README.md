@@ -5,7 +5,7 @@ Iperftester es una distribución live basada en [**Debian**](https://www.debian.
 ```
 Este repositorio contiene:
  1. Scripts Bash
- 2. Imagen ISO con todas las herramientas necesarias para poder realizar tests.
+ 2. Imagen ISO con todas las herramientas necesarias para poder realizar tests
 ```
 Puede arrancar la [**Imagen Iso**](https://www.debian.org/) desde un DVD, CD o Pendrive
 
@@ -57,7 +57,7 @@ Se desea medir el throughput y calidad de enlaces entre dos sedes:
 
 ### Solución basada en iperftester
 
-El throughput máximo en este escenario será en del enlace con menor ancho de banda (Macrolan de 100Mbps)
+El `throughput` máximo en este escenario será el del enlace con menor ancho de banda (Macrolan de 100Mbps)
 
 Para realizar los tests es necesario iniciar `iperftester` en un equipo de la Sede A y otro de la Sede B:
 
