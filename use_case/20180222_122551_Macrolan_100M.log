@@ -1,0 +1,159 @@
+###################################################################
+                                                                   
+-------------------------------------------------------------------
+Resultados Iperftester - v00r01                                    
+-------------------------------------------------------------------
+                                                                   
+Fecha         : jue feb 22 12:25:51 UTC 2018                                            
+Sistema       : Linux pipe 4.9.0-4-686-pae #1 SMP Debian 4.9.65-3 (2017-12-03) i686 GNU/Linux                                        
+Identificador : Macrolan_100M                                  
+Versión iperf3: iperf 3.4 (cJSON 1.5.2)                             
+        iperf : iperf version 2.0.10 (11 Aug 2017) pthreads        
+                                                                   
+                                                                   
+###################################################################
+                                                                   
+A) Hardware                                                        
+                                                                   
+A.1) Red                                                           
+                                                                   
+  *-network
+       description: Ethernet interface
+       product: 82579LM Gigabit Network Connection
+       vendor: Intel Corporation
+       physical id: 19
+       bus info: pci@0000:00:19.0
+       logical name: eth0
+       version: 04
+       serial: 98:90:96:99:0c:a8
+       size: 1Gbit/s
+       capacity: 1Gbit/s
+       width: 32 bits
+       clock: 33MHz
+       capabilities: pm msi bus_master cap_list ethernet physical tp 10bt 10bt-fd 100bt 100bt-fd 1000bt-fd autonegotiation
+       configuration: autonegotiation=on broadcast=yes driver=e1000e driverversion=3.2.6-k duplex=full firmware=0.13-4 ip=10.10.10.10 latency=0 link=yes multicast=yes port=twisted pair speed=1Gbit/s
+       resources: irq:25 memory:f7f00000-f7f1ffff memory:f7f39000-f7f39fff ioport:f040(size=32)                                        
+                                                                   
+                                                                   
+###################################################################
+                                                                   
+                                                                   
+B) TESTS                                                           
+                                                                   
+===================================================================
+B.1) Comando: ping 10.10.20.20 -c 10                                   
+===================================================================
+                                                                   
+PING 10.10.20.20 (10.10.20.20) 56(84) bytes of data.
+64 bytes from 10.10.20.20: icmp_seq=1 ttl=62 time=0.665 ms
+64 bytes from 10.10.20.20: icmp_seq=2 ttl=62 time=0.649 ms
+64 bytes from 10.10.20.20: icmp_seq=3 ttl=62 time=0.761 ms
+64 bytes from 10.10.20.20: icmp_seq=4 ttl=62 time=0.740 ms
+64 bytes from 10.10.20.20: icmp_seq=5 ttl=62 time=0.706 ms
+64 bytes from 10.10.20.20: icmp_seq=6 ttl=62 time=0.687 ms
+64 bytes from 10.10.20.20: icmp_seq=7 ttl=62 time=0.691 ms
+64 bytes from 10.10.20.20: icmp_seq=8 ttl=62 time=2.21 ms
+64 bytes from 10.10.20.20: icmp_seq=9 ttl=62 time=0.722 ms
+64 bytes from 10.10.20.20: icmp_seq=10 ttl=62 time=0.662 ms
+
+--- 10.10.20.20 ping statistics ---
+10 packets transmitted, 10 received, 0% packet loss, time 9184ms
+rtt min/avg/max/mdev = 0.649/0.849/2.214/0.457 ms
+                                                                   
+                                                                   
+===================================================================
+B.2) Comando: traceroute 10.10.20.20                                   
+===================================================================
+                                                                   
+traceroute to 10.10.20.20 (10.10.20.20), 30 hops max, 60 byte packets
+ 1  10.10.10.1 (10.10.10.1)  0.610 ms  0.657 ms  0.711 ms
+ 2  80.80.80.80 (80.80.80.80)  1.554 ms  1.643 ms  1.786 ms
+ 3  10.10.20.20 (10.10.20.20)  0.719 ms  0.717 ms  0.703 ms
+                                                                   
+                                                                   
+===================================================================
+B.3) Comando: iperf3 -c 10.10.20.20 -p 5201 -t 30 -i 5                                    
+===================================================================
+                                                                   
+Connecting to host 10.10.20.20, port 5201
+[  5] local 10.10.10.10 port 58728 connected to 10.10.20.20 port 5201
+[ ID] Interval           Transfer     Bitrate         Retr  Cwnd
+[  5]   0.00-5.00   sec  57.1 MBytes  95.9 Mbits/sec   36   94.7 KBytes       
+[  5]   5.00-10.00  sec  54.1 MBytes  90.8 Mbits/sec   12    102 KBytes       
+[  5]  10.00-15.00  sec  55.3 MBytes  92.8 Mbits/sec   13   96.2 KBytes       
+[  5]  15.00-20.00  sec  55.4 MBytes  92.9 Mbits/sec   13   66.5 KBytes       
+[  5]  20.00-25.00  sec  54.7 MBytes  91.8 Mbits/sec   11   65.0 KBytes       
+[  5]  25.00-30.00  sec  55.4 MBytes  92.9 Mbits/sec   11    112 KBytes       
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-30.00  sec   332 MBytes  92.8 Mbits/sec   96             sender
+[  5]   0.00-30.04  sec   330 MBytes  92.3 Mbits/sec                  receiver
+
+iperf Done.
+                                                                   
+                                                                   
+===================================================================
+B.4) Comando: iperf3 -c 10.10.20.20 -p 5201 -t 30 -i 5  -R                                    
+===================================================================
+                                                                   
+Connecting to host 10.10.20.20, port 5201
+Reverse mode, remote host 10.10.20.20 is sending
+[  5] local 10.10.10.10 port 58732 connected to 10.10.20.20 port 5201
+[ ID] Interval           Transfer     Bitrate
+[  5]   0.00-5.00   sec  55.2 MBytes  92.6 Mbits/sec                  
+[  5]   5.00-10.00  sec  55.6 MBytes  93.3 Mbits/sec                  
+[  5]  10.00-15.00  sec  55.5 MBytes  93.1 Mbits/sec                  
+[  5]  15.00-20.00  sec  55.6 MBytes  93.3 Mbits/sec                  
+[  5]  20.00-25.00  sec  55.4 MBytes  93.0 Mbits/sec                  
+[  5]  25.00-30.00  sec  55.6 MBytes  93.3 Mbits/sec                  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-30.03  sec   334 MBytes  93.3 Mbits/sec   68             sender
+[  5]   0.00-30.00  sec   333 MBytes  93.2 Mbits/sec                  receiver
+
+iperf Done.
+                                                                   
+                                                                   
+===================================================================
+B.5) Comando: iperf3 -c 10.10.20.20 -p 5201 -t 30 -i 5  -b 100M -u                                    
+===================================================================
+                                                                   
+Connecting to host 10.10.20.20, port 5201
+[  5] local 10.10.10.10 port 41486 connected to 10.10.20.20 port 5201
+[ ID] Interval           Transfer     Bitrate         Total Datagrams
+[  5]   0.00-5.00   sec  59.6 MBytes   100 Mbits/sec  43156  
+[  5]   5.00-10.00  sec  59.6 MBytes   100 Mbits/sec  43163  
+[  5]  10.00-15.00  sec  59.6 MBytes   100 Mbits/sec  43163  
+[  5]  15.00-20.00  sec  59.6 MBytes   100 Mbits/sec  43163  
+[  5]  20.00-25.00  sec  59.6 MBytes   100 Mbits/sec  43163  
+[  5]  25.00-30.00  sec  59.6 MBytes   100 Mbits/sec  43163  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
+[  5]   0.00-30.00  sec   358 MBytes   100 Mbits/sec  0.000 ms  0/258971 (0%)  sender
+[  5]   0.00-30.26  sec   340 MBytes  94.4 Mbits/sec  0.193 ms  12469/258971 (4.8%)  receiver
+
+iperf Done.
+                                                                   
+                                                                   
+===================================================================
+B.6) Comando: iperf3 -c 10.10.20.20 -p 5201 -t 30 -i 5  -b 100M -u -R                                    
+===================================================================
+                                                                   
+Connecting to host 10.10.20.20, port 5201
+Reverse mode, remote host 10.10.20.20 is sending
+[  5] local 10.10.10.10 port 47715 connected to 10.10.20.20 port 5201
+[ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
+[  5]   0.00-5.00   sec  56.3 MBytes  94.5 Mbits/sec  0.190 ms  2740/43509 (6.3%)  
+[  5]   5.00-10.00  sec  56.3 MBytes  94.4 Mbits/sec  0.188 ms  2420/43162 (5.6%)  
+[  5]  10.00-15.00  sec  56.4 MBytes  94.6 Mbits/sec  0.190 ms  2327/43163 (5.4%)  
+[  5]  15.00-20.00  sec  56.4 MBytes  94.5 Mbits/sec  0.194 ms  2353/43163 (5.5%)  
+[  5]  20.00-25.00  sec  56.2 MBytes  94.3 Mbits/sec  0.186 ms  2463/43163 (5.7%)  
+[  5]  25.00-30.00  sec  56.4 MBytes  94.5 Mbits/sec  0.189 ms  2351/43162 (5.4%)  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
+[  5]   0.00-30.05  sec   358 MBytes   100 Mbits/sec  0.000 ms  0/259404 (0%)  sender
+[  5]   0.00-30.00  sec   338 MBytes  94.5 Mbits/sec  0.180 ms  14659/259403 (5.7%)  receiver
+
+iperf Done.
+                                                                   
+                                                                   
