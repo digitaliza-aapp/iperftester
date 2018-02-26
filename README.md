@@ -2,6 +2,9 @@
 
 Iperftester es una distribución live basada en [**Debian**](https://www.debian.org/) para medir el ancho de banda (throughput) y calidad de enlaces de red mediante [**iperf**](https://sourceforge.net/projects/iperf2/) / [**iperf3**](https://github.com/esnet/iperf#iperf3--a-tcp-udp-and-sctp-network-bandwidth-measurement-tool) 
 
+```
+Este repositorio contiene los scripts Bash y una image ISO con todas las herramientas necesarias para poder realizar tests.
+```
 Puede arrancar la [**Imagen Iso**](https://www.debian.org/) desde un DVD, CD o Pendrive
 
 El enlace a examinar se delimita por dos equipos ejecutando `iperftester` donde uno actua como cliente y otro como servidor.
