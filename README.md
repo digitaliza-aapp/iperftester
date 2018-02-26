@@ -96,7 +96,8 @@ Es posible comprobar la conectividad entre dos puntos mediante un puerto, por ej
 
 La imagen ISO dispone de 3 opciones de arranque:
 
-- Iperftester 
+- Iperftester (vga=791)
+   - **vga=791** cambia resolución de pantalla a 1024x768 y 16 bits
 - Iperftester (PAE vga=794) 
    - **PAE**  Equipos con mas de 3Gb de memoria RAM
    - **vga=794** cambia resolución de pantalla a 1280x1024 y 16 bits
