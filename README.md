@@ -53,7 +53,7 @@ Se desea medir el throughput y calidad de enlaces entre dos sedes:
 - Sede A: Red interna a 1Gbps/1000Mbps con conexión Macrolan 100Mbps 
 - Sede B: Red interna a 1Gbps/1000Mbps con conexión Macrolan 150Mbps  
 
-![](https://github.com/fmbrieva/iperftester/blob/master/use_case/iperftester_macrolan_100M_escenario_00r01.png?raw=true)
+![](use_case/iperftester_macrolan_100M_escenario_00r01.png)
 
 ### Solución basada en iperftester
 
@@ -80,7 +80,7 @@ Si seleccionamos la opción `Auto` en la Sede A se ejecutarán los siguientes co
      
 Ejemplo de un fichero de log con los resultados de la prueba [**20180223_1212_Macrolan_100M.log**](https://www.debian.org/)
 
-![](https://github.com/fmbrieva/iperftester/blob/master/use_case/iperftester_macrolan_100M_00r01.png?raw=true)
+![](use_case/iperftester_macrolan_100M_00r01.png)
 
 ## Otros usos
 
