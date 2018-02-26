@@ -48,7 +48,7 @@ Si necesita instalar nuevas herramientas y utiliza un proxy para acceder a inter
 ## Caso de uso ##
 ### Escenario 
 
-Se desea medir el throughput y calidad de enlaces entre dos sedes:
+Se desea medir el `throughput` y calidad de enlaces entre dos sedes:
 
 - Sede A: Red interna a 1Gbps/1000Mbps con conexión Macrolan 100Mbps 
 - Sede B: Red interna a 1Gbps/1000Mbps con conexión Macrolan 150Mbps  
@@ -57,7 +57,7 @@ Se desea medir el throughput y calidad de enlaces entre dos sedes:
 
 ### Solución basada en iperftester
 
-El `throughput` máximo en este escenario será el del enlace con menor ancho de banda (Macrolan de 100Mbps)
+El `throughput` máximo en este escenario será el del enlace con menor ancho de banda (`Macrolan de 100Mbps`)
 
 Para realizar los tests es necesario iniciar `iperftester` en un equipo de la Sede A y otro de la Sede B:
 
