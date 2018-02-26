@@ -78,7 +78,7 @@ Si seleccionamos la opción `Auto` en la Sede A se ejecutarán los siguientes co
 | `iperf3` | Inyectar tráfico UDP desde Sede B a Sede A  (Tráfico de color rojo) |
 
      
-Ejemplo de un fichero de log con los resultados de la prueba [**20180223_1212_Macrolan_100M.log**](https://www.debian.org/)
+Ejemplo de un fichero de log con los resultados de la prueba [**20180222_122551_Macrolan_100M.log**](use_case/20180222_122551_Macrolan_100M.log)
 
 ![](use_case/iperftester_macrolan_100M_00r01.png)
 
