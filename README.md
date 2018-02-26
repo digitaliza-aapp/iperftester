@@ -12,7 +12,7 @@ Puede descargar la distribución `Live` en una [**imagen ISO - Iperftester_01r00
 Ver apartado 'Notas sobre imagen ISO'
 ``` 
 
-El enlace a examinar se delimita por dos equipos ejecutando `iperftester` donde uno actua como cliente y otro como servidor.
+El enlace a examinar se delimita por dos equipos ejecutando `iperftester` donde uno actúa como cliente y otro como servidor.
 
 ```
 Un equipo ejecutanto 'iperftester' puede actuar como cliente o servidor.
