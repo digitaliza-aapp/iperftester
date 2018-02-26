@@ -15,7 +15,7 @@ El enlace a examinar se delimita por dos equipos ejecutando `iperftester` donde 
 Un equipo ejecutanto 'iperftester' puede actuar como cliente o servidor.
 ```
 
-![](https://github.com/fmbrieva/iperftester/blob/master/use_case/iperftester_version_00r04.png?raw=true)
+![](use_case/iperftester_version_00r04.png)
 
 Al iniciar `iperftester` se arrancan 4 programas:
  
