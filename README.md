@@ -6,7 +6,7 @@ Iperftester es una distribución `Live` basada en [**Debian**](https://www.debia
 Este repositorio contiene solamente los scripts Bash.
 ```
 
-Puede descargar la distribución `Live` en una [**imagen ISO - Iperftester_01r00.iso**](http://delegacionprovincial.com/iperftester/iperftester_v01_r00.iso) con los scripts y todas las herramientas necesarias para poder realizar tests desde un DVD, CD o Pendrive.
+Puede descargar la distribución `Live` [**Iperftester_01r00.iso**](http://delegacionprovincial.com/iperftester/iperftester_v01_r00.iso) con los scripts y todas las herramientas necesarias para poder realizar tests desde un DVD, CD o Pendrive.
 
 ```
 Ver apartado 'Notas sobre imagen ISO'
