@@ -10,7 +10,10 @@ Este repositorio contiene solamente los scripts Bash.
 Puede descargar una imagen iso [**Iperftester_01r00.iso**](https://www.debian.org/) con los scripts y todas las herramientas necesarias para poder realizar tests desde un DVD, CD o Pendrive.
 
 ```
-Si utiliza la imagen iso desde un software de virtualización debe configurar la tarjeta de red como bridge (adaptador puente)
+Si utiliza la imagen iso desde un software de virtualización:
+
+ - Configurar la tarjeta de red como bridge (adaptador puente)
+ 
 ``` 
 El enlace a examinar se delimita por dos equipos ejecutando `iperftester` donde uno actua como cliente y otro como servidor.
 
