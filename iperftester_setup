@@ -1,0 +1,38 @@
+#!/bin/bash
+
+############################################################################################
+#                                                                                          #
+# iperftester_setup : Configurar tarjetas de red y servidor local                          #
+#                                                                                          #
+#------------------------------------------------------------------------------------------#
+#                                                                                          #
+# Versión       : 01r00                                                                    #
+# Fecha         : 3/febrero/2018                                                           #
+# Autor         : Felipe Muñoz Brieva - fmbrieva@gmail.com                                 #
+#                                                                                          #
+#------------------------------------------------------------------------------------------#
+#                                                                                          #
+# Modificaciones:                                                                          #
+#                                                                                          #
+# --01r00--       Version inicial                                                          #
+# 03/02/2018                                                                               #
+#   Felipe                                                                                 #
+#                                                                                          #
+############################################################################################
+
+## 
+. iperftester_lib
+
+actualizarParametros
+
+mensajeInicialIperf
+
+#clear
+
+leerConfigurarHost
+
+reiniciarServidoresIperf
+
+eval $RUTA_IPERFTESTER/iperftester_menu; 
+
+

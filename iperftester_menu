@@ -1,0 +1,132 @@
+#!/bin/bash
+
+############################################################################################
+#                                                                                          #
+# iperftester   : Realizar test iperf con servidores remotos                               #
+#                                                                                          #
+#------------------------------------------------------------------------------------------#
+#                                                                                          #
+# Versión       : 01r00                                                                    #
+# Fecha         : 3/febrero/2018                                                           #
+# Autor         : Felipe Muñoz Brieva - fmbrieva@gmail.com                                 #
+#                                                                                          #
+#------------------------------------------------------------------------------------------#
+#                                                                                          #
+# Modificaciones:                                                                          #
+#                                                                                          #
+# --01r00--       Version inicial                                                          #
+# 03/02/2018                                                                               #
+#   Felipe                                                                                 #
+#                                                                                          #
+############################################################################################
+
+. iperftester_lib
+
+actualizarParametros
+
+### Menu para control de servidores iperf
+function menuServidoresIperf()
+{
+
+    >$FICHERO_TEMPORAL
+
+    while true
+  
+    do
+       ### display main menu ###
+       dialog --clear --backtitle "Iperftester $VERSION" \
+              --title "[IPERFTESTER $VERSION ]" \
+              --menu "--------------- Seleccione una opción ---------------" 17 60 14 \
+                 Estado "Ver estado servidores" \
+                 Parar "Parar servidores" \
+                 Reiniciar "Reiniciar servidores" \
+                 Volver "" 2>"${FICHERO_TEMPORAL}"\
+
+       menuItem=$(<"${FICHERO_TEMPORAL}")
+
+       case $menuItem in
+               Estado) verServidoresIperf;;
+               Parar) pararServidoresIperf;;
+               Reiniciar) reiniciarServidoresIperf;;
+               Volver) break;;
+       esac
+
+    done
+
+}
+
+# Crear el fichero vacio
+### Menu para configuración de parámetros 
+function menuConfiguracion()
+{
+
+    >$FICHERO_TEMPORAL
+
+    while true
+  
+    do
+       ### display main menu ###
+       dialog --clear --backtitle "Iperftester $VERSION" \
+              --title "[IPERFTESTER $VERSION ]" \
+              --menu "--------------- Seleccione una opción ---------------" 17 60 14 \
+                 Host "Cambiar IP/Mascara/Gateway/Dns" \
+		 Servidor "Control de servidores " \
+                 Local "Cambiar puertos locales" \
+                 Remoto "Cambiar puertos remotos" \
+                 Tiempo "Cambiar tiempo/intervalo" \
+                 Password "Cambiar password" \
+                 Volver "" 2>"${FICHERO_TEMPORAL}"\
+
+       menuItem=$(<"${FICHERO_TEMPORAL}")
+
+       case $menuItem in
+               Host) leerConfigurarHost;;
+               Servidor) menuServidoresIperf;;
+               Local) leerConfigurarPuertosLocales;;
+               Remoto) leerConfigurarPuertosRemotos;;
+               Tiempo) leerConfigurarTiempoIntervalo;;
+               Password) leerConfigurarPassword;;
+               Volver) break;;
+       esac
+
+    done
+
+}
+
+# Crear el fichero vacio
+>$FICHERO_TEMPORAL
+
+while true
+
+do
+   ### display main menu ###
+   dialog --clear --backtitle "Iperftester $VERSION" \
+          --title "[IPERFTESTER $VERSION ]" \
+          --menu "--------------- Seleccione una opción ---------------" 17 60 14 \
+                 Auto "Realizar tests iperf3 de forma automática" \
+                 TCP "Prueba iperf3 TCP " \
+                 UDP "Prueba iperf3 UDP" \
+                 Experto "Teclear comando iperf ó iperf3" \
+                 Ver "Ver resultados" \
+                 Setup "Configuración" \
+                 Pendrive "Exportar resultados" \
+                 Cerrar "Cerrar sesión" \
+                 Finalizar "Apagar equipo" 2>"${FICHERO_TEMPORAL}"\
+
+   menuItem=$(<"${FICHERO_TEMPORAL}")
+
+   case $menuItem in
+           Auto) testIperfRemotoAuto;;
+           TCP) testIperfRemotoTcp;;
+           UDP) testIperfRemotoUdp;;
+           Experto) testComandoIperf;;
+           Ver) verResultados;;
+           Setup) menuConfiguracion;;
+           Pendrive) copiarResultadosEnPendrive;;
+	   Cerrar) cerrarSesion;; 
+           Finalizar) apagarEquipo;;
+   esac
+
+done
+
+
