@@ -10,11 +10,9 @@ Este repositorio contiene solamente los scripts Bash.
 Puede descargar una imagen iso [**Iperftester_01r00.iso**](https://www.debian.org/) con los scripts y todas las herramientas necesarias para poder realizar tests desde un DVD, CD o Pendrive.
 
 ```
-Si utiliza la imagen iso desde un software de virtualización:
-
- - Configurar la tarjeta de red como bridge (adaptador puente)
- 
+Ver apartado 'Notas sobre imagen ISO'
 ``` 
+
 El enlace a examinar se delimita por dos equipos ejecutando `iperftester` donde uno actua como cliente y otro como servidor.
 
 ```
@@ -93,6 +91,35 @@ Ejemplo de un fichero de log con los resultados de la prueba [**20180222_122551_
 ### Cambio de puertos
 
 Es posible comprobar la conectividad entre dos puntos mediante un puerto, por ejemplo arrancando un servidor `iperf`/`iperf3` en el puerto `3306` podemos comprobar que no existen filtros intermedios (firewall) entre un equipo y un servidor Mysql.
+
+## Notas sobre imagen ISO
+
+Se han creado 3 opciones de arranque:
+
+- Iperftester 
+- Iperftester (PAE vga=794) 
+-- **PAE**  Equipos con mas de 3Gb de memoria RAM
+-- **vga=794** cambia resolución de pantalla a 1280x1024 y 16 bits
+- Detectar Hardware
+
+```
+Para cambiar parámetros (ejemplo vga=798) debe utilizar el tabulador sobre la opción de arranque
+```
+Si utiliza software de virtualización para arrancar la imagen ISO debe configurar la tarjeta de red como bridge (adaptador puente).
+
+### Resoluciones vga
+
+A continuación de detallan algunas `resoluciones vga` que pueden seleccionarse al arrancar la imagen ISO
+
+```
+La segunda opción de arranque configura utiliza un kernel PAE con vga=794
+```
+
+| Depth | 800×600 | 1024×768 | 1152×864 | 1280×1024 | 1600×1200 |
+| ---- | ---- | ---- | ---- | ---- | ---- |  
+| 8 bit | vga=771 | vga=773 | vga=353 |	vga=775 | vga=796 |
+| 16 bit | vga=788 | vga=791 | vga=355 |	vga=794 | vga=798 |
+| 24 bit | vga=789 | vga=792 | | vga=795 | vga=799 |
 
 ## Roadmap
 
