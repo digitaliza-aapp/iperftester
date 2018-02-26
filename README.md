@@ -1,13 +1,12 @@
 # Iperftester
 
-Iperftester es una distribución live basada en [**Debian**](https://www.debian.org/) para medir el ancho de banda (`throughput`) y calidad de enlaces de red mediante [**iperf**](https://sourceforge.net/projects/iperf2/) / [**iperf3**](http://software.es.net/iperf/) 
+Iperftester es una distribución `Live` basada en [**Debian**](https://www.debian.org/) para medir el ancho de banda (`throughput`) y calidad de enlaces de red mediante [**iperf**](https://sourceforge.net/projects/iperf2/) / [**iperf3**](http://software.es.net/iperf/) 
 
 ```
 Este repositorio contiene solamente los scripts Bash.
-
 ```
 
-Puede descargar una imagen iso [**Iperftester_01r00.iso**](https://www.debian.org/) con los scripts y todas las herramientas necesarias para poder realizar tests desde un DVD, CD o Pendrive.
+Puede descargar la distribución `Live` en una imagen ISO [**Iperftester_01r00.iso**](https://www.debian.org/) con los scripts y todas las herramientas necesarias para poder realizar tests desde un DVD, CD o Pendrive.
 
 ```
 Ver apartado 'Notas sobre imagen ISO'
@@ -50,6 +49,7 @@ Si necesita instalar nuevas herramientas y utiliza un proxy para acceder a inter
 - export https_proxy="http://usuario:password@ip_del_proxy:puerto_del_proxy" 
 
 ## Caso de uso ##
+
 ### Escenario 
 
 Se desea medir el `throughput` y calidad de enlaces entre dos sedes:
@@ -94,7 +94,7 @@ Es posible comprobar la conectividad entre dos puntos mediante un puerto, por ej
 
 ## Notas sobre imagen ISO
 
-Se han creado 3 opciones de arranque:
+La imagen ISO dispone de 3 opciones de arranque:
 
 - Iperftester 
 - Iperftester (PAE vga=794) 
@@ -105,7 +105,8 @@ Se han creado 3 opciones de arranque:
 ```
 Para cambiar parámetros (ejemplo vga=798) debe utilizar el tabulador sobre la opción de arranque
 ```
-Si utiliza software de virtualización para arrancar la imagen ISO debe configurar la tarjeta de red como bridge (adaptador puente).
+
+Si utiliza software de virtualización para arrancar la imagen ISO debe configurar la tarjeta de red como `bridge` (adaptador puente).
 
 ### Resoluciones vga
 
@@ -121,9 +122,12 @@ A continuación de detallan algunas `resoluciones vga` que pueden seleccionarse 
 
 ### Version 0 (febrero 2018):
 
-- Iperftester Live
-- Medir ancho de banda y calidad de enlaces
-- Automatizar pruebas y crear ficheros de log con los resultados.
+- Iperftester `Live`
+   - Medir ancho de banda y calidad de enlaces
+   - Automatizar pruebas
+   - Crear ficheros de log con los resultados.
+   - Controlar parametros de ejecución
+   - Exportar resultados 
 
 ### Versión 1:
 
@@ -147,7 +151,7 @@ A continuación de detallan algunas `resoluciones vga` que pueden seleccionarse 
 ### Version 0:
 - [**Debian**](https://www.debian.org/)
 - [**iperf**](https://sourceforge.net/projects/iperf2/)
-- [**iperf3**](https://github.com/esnet/iperf#iperf3--a-tcp-udp-and-sctp-network-bandwidth-measurement-tool)
+- [**iperf3**](http://software.es.net/iperf/)
 
 ### Versión 1:
 - [**Swagger**](https://swagger.io/)
