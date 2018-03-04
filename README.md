@@ -121,7 +121,7 @@ A continuación de detallan algunas `resoluciones vga` que pueden seleccionarse 
 
 ## Roadmap
 
-### Version 0 (febrero 2018):
+### Version 1 (febrero 2018):
 
 - Iperftester `Live`
    - Medir ancho de banda y calidad de enlaces
@@ -130,7 +130,7 @@ A continuación de detallan algunas `resoluciones vga` que pueden seleccionarse 
    - Controlar parametros de ejecución
    - Exportar resultados 
 
-### Versión 1:
+### Versión 2:
 
 - Programación horaria de pruebas iperf / iperf3
 - APIRest
@@ -139,7 +139,7 @@ A continuación de detallan algunas `resoluciones vga` que pueden seleccionarse 
    - Documentación Swagger
 - Facilitar despliegue (Contenedores LXD)
 
-### Versión 2 - 3:
+### Versión 3 - 4:
 - Modo sonda / colector
 - Colector Sflow para visualizar tráfico E/S en tiempo real 
 - Monitorizar sondas mediante (Icinga/Nagios)
@@ -149,16 +149,16 @@ A continuación de detallan algunas `resoluciones vga` que pueden seleccionarse 
 
 ## Créditos
 
-### Version 0:
+### Version 1:
 - [**Debian**](https://www.debian.org/)
 - [**iperf**](https://sourceforge.net/projects/iperf2/)
 - [**iperf3**](http://software.es.net/iperf/)
 
-### Versión 1:
+### Versión 2:
 - [**Swagger**](https://swagger.io/)
 - [**LXD - Linux container**](https://linuxcontainers.org/lxd/)
 
-### Versión 2 - 3:
+### Versión 3 - 4:
 - [**Grafana**](https://grafana.com/)
 - [**Mediawiki**](https://www.mediawiki.org/wiki/MediaWiki)
 - [**Icinga**](https://www.icinga.com/)
