@@ -53,6 +53,7 @@ Si necesita instalar nuevas herramientas y utiliza un proxy para acceder a inter
 ### Escenario 
 
 Se desea medir el `throughput` y calidad de enlaces entre dos sedes:
+ort to receive bidirectional tests back on
 
 - Sede A: Red interna a 1Gbps/1000Mbps con conexión Macrolan 100Mbps 
 - Sede B: Red interna a 1Gbps/1000Mbps con conexión Macrolan 150Mbps  
@@ -149,17 +150,17 @@ A continuación de detallan algunas `resoluciones vga` que pueden seleccionarse 
 
 ## Releases
 
-### 2018-03-03 (01r00)
+### 2018-02-24 (01r00)
 - Versión inicial
 
-### 2018-03-03 (01r01)
+### 2018-02-28 (01r01)
 - Idioma español en lang/es
 
 ### 2018-03-03 (01r02)
 - Incluir nueva versión iperf 3.5+ (fecha de publicación iperf 3.5+ 2018-03-02)
 
 ### 2018-03-08 (01r03)
-- Añadir **Listen Port** para realizar pruebas bidireccionales con iperf (version 2)
+- Añadir **Listen Port** para test bidireccionales en iperf version 2
 - Permitir cambiar binarios iperf para tests en modo Auto, TCP y UDP
 -- iperf 2.0.10 (versión 2)
 -- iperf 3.5+ (versión 3)
