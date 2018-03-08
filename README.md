@@ -161,7 +161,7 @@ A continuación de detallan algunas `resoluciones vga` que pueden seleccionarse 
 
 ### 2018-03-08 (01r03)
 - Añadir **Listen Port** para test bidireccionales en iperf version 2
-- Permitir cambiar binarios iperf para tests en modo Auto, TCP y UDP
+- Permitir cambiar binarios `iperf` para tests en modo Auto, TCP y UDP
    - iperf 2.0.10 (versión 2)
    - iperf 3.5+ (versión 3)
 
