@@ -6,16 +6,19 @@
 #                                                                                          #
 #------------------------------------------------------------------------------------------#
 #                                                                                          #
-# Versión       : 01r00                                                                    #
-# Fecha         : 3/febrero/2018                                                           #
 # Autor         : Felipe Muñoz Brieva - fmbrieva@gmail.com                                 #
 #                                                                                          #
 #------------------------------------------------------------------------------------------#
 #                                                                                          #
 # Modificaciones:                                                                          #
 #                                                                                          #
-# --01r00--       Version inicial                                                          #
-# 03/02/2018                                                                               #
+# 03/02/2018      Versión inicial                                                          #
+#   Felipe                                                                                 #
+#                                                                                          #
+# 28/02/2018      Añadir textos personalizados por idioma                                  #
+#   Felipe                                                                                 #
+#                                                                                          #
+# 08/03/2018      Permitir cambiar binarios para tests en modo AUTO, TCP y UDP             #
 #   Felipe                                                                                 #
 #                                                                                          #
 ############################################################################################
@@ -34,21 +37,21 @@ function menuServidoresIperf()
   
     do
        ### display main menu ###
-       dialog --clear --backtitle "Iperftester $VERSION" \
-              --title "[IPERFTESTER $VERSION ]" \
-              --menu "--------------- Seleccione una opción ---------------" 17 60 14 \
-                 Estado "Ver estado servidores" \
-                 Parar "Parar servidores" \
-                 Reiniciar "Reiniciar servidores" \
-                 Volver "" 2>"${FICHERO_TEMPORAL}"\
+       dialog --clear --backtitle "$PROGRAMA $VERSION" \
+              --title "[$PROGRAMA $VERSION ]" \
+              --menu "$DIALOG_IPERF_SERVER_OPTION" 17 60 14 \
+                 $DIALOG_IPERF_SERVER_STATUS_SHORT "$DIALOG_IPERF_SERVER_STATUS" \
+                 $DIALOG_IPERF_SERVER_STOP_SHORT "$DIALOG_IPERF_SERVER_STOP" \
+                 $DIALOG_IPERF_SERVER_RESTART_SHORT "$DIALOG_IPERF_SERVER_RESTART" \
+                 $DIALOG_IPERF_SERVER_RETURN_SHORT "" 2>"${FICHERO_TEMPORAL}"\
 
        menuItem=$(<"${FICHERO_TEMPORAL}")
 
        case $menuItem in
-               Estado) verServidoresIperf;;
-               Parar) pararServidoresIperf;;
-               Reiniciar) reiniciarServidoresIperf;;
-               Volver) break;;
+               $DIALOG_IPERF_SERVER_STATUS_SHORT) verServidoresIperf;;
+               $DIALOG_IPERF_SERVER_STOP_SHORT) pararServidoresIperf;;
+               $DIALOG_IPERF_SERVER_RESTART_SHORT) reiniciarServidoresIperf;;
+               $DIALOG_IPERF_SERVER_RETURN_SHORT) break;;
        esac
 
     done
@@ -66,27 +69,27 @@ function menuConfiguracion()
   
     do
        ### display main menu ###
-       dialog --clear --backtitle "Iperftester $VERSION" \
-              --title "[IPERFTESTER $VERSION ]" \
-              --menu "--------------- Seleccione una opción ---------------" 17 60 14 \
-                 Host "Cambiar IP/Mascara/Gateway/Dns" \
-		 Servidor "Control de servidores " \
-                 Local "Cambiar puertos locales" \
-                 Remoto "Cambiar puertos remotos" \
-                 Tiempo "Cambiar tiempo/intervalo" \
-                 Password "Cambiar password" \
-                 Volver "" 2>"${FICHERO_TEMPORAL}"\
+       dialog --clear --backtitle "$PROGRAMA $VERSION" \
+              --title "[$PROGRAMA $VERSION ]" \
+              --menu "$DIALOG_SETUP_OPTION" 17 60 14 \
+                 $DIALOG_SETUP_NETWORK_SHORT "$DIALOG_SETUP_NETWORK" \
+		 $DIALOG_SETUP_SERVER_SHORT "$DIALOG_SETUP_SERVER" \
+                 $DIALOG_SETUP_PORT_LOCAL_SHORT "$DIALOG_SETUP_PORT_LOCAL" \
+                 $DIALOG_SETUP_PORT_REMOTE_SHORT "$DIALOG_SETUP_PORT_REMOTE" \
+                 $DIALOG_SETUP_TIME_SHORT "$DIALOG_SETUP_TIME" \
+                 $DIALOG_SETUP_PASSWORD_SHORT "$DIALOG_SETUP_PASSWORD" \
+                 $DIALOG_SETUP_RETURN_SHORT "" 2>"${FICHERO_TEMPORAL}"\
 
        menuItem=$(<"${FICHERO_TEMPORAL}")
 
        case $menuItem in
-               Host) leerConfigurarHost;;
-               Servidor) menuServidoresIperf;;
-               Local) leerConfigurarPuertosLocales;;
-               Remoto) leerConfigurarPuertosRemotos;;
-               Tiempo) leerConfigurarTiempoIntervalo;;
-               Password) leerConfigurarPassword;;
-               Volver) break;;
+               $DIALOG_SETUP_NETWORK_SHORT) leerConfigurarHost;;
+               $DIALOG_SETUP_SERVER_SHORT) menuServidoresIperf;;
+               $DIALOG_SETUP_PORT_LOCAL_SHORT) leerConfigurarPuertosLocales;;
+               $DIALOG_SETUP_PORT_REMOTE_SHORT) leerConfigurarPuertosRemotos;;
+               $DIALOG_SETUP_TIME_SHORT) leerConfigurarTiempoIntervalo;;
+               $DIALOG_SETUP_PASSWORD_SHORT) leerConfigurarPassword;;
+               $DIALOG_SETUP_RETURN_SHORT) break;;
        esac
 
     done
@@ -98,33 +101,49 @@ function menuConfiguracion()
 
 while true
 
+if [ "$iperfVersionActiva" = "3" ]; then
+   textoMainOption="$DIALOG_MAIN_OPTION $IPERF3_VERSION_COMPLETA";  
+   textoMainBinario="$DIALOG_MAIN_BINARIO_V2";  
+   textoMainAuto="$DIALOG_MAIN_AUTO_01 $IPERF3_VERSION $DIALOG_MAIN_AUTO_02";  
+   textoMainTcp="$DIALOG_MAIN_TCP_01 $IPERF3_VERSION $DIALOG_MAIN_TCP_02";  
+   textoMainUdp="$DIALOG_MAIN_UDP_01 $IPERF3_VERSION $DIALOG_MAIN_UDP_02";  
+ else
+   textoMainOption="$DIALOG_MAIN_OPTION $IPERF_VERSION_COMPLETA";  
+   textoMainBinario="$DIALOG_MAIN_BINARIO_V3";  
+   textoMainAuto="$DIALOG_MAIN_AUTO_01 $IPERF_VERSION $DIALOG_MAIN_AUTO_02";  
+   textoMainTcp="$DIALOG_MAIN_TCP_01 $IPERF_VERSION $DIALOG_MAIN_TCP_02";  
+   textoMainUdp="$DIALOG_MAIN_UDP_01 $IPERF_VERSION $DIALOG_MAIN_UDP_02";  
+fi
+
 do
    ### display main menu ###
-   dialog --clear --backtitle "Iperftester $VERSION" \
-          --title "[IPERFTESTER $VERSION ]" \
-          --menu "--------------- Seleccione una opción ---------------" 17 60 14 \
-                 Auto "Realizar tests iperf3 de forma automática" \
-                 TCP "Prueba iperf3 TCP " \
-                 UDP "Prueba iperf3 UDP" \
-                 Experto "Teclear comando iperf ó iperf3" \
-                 Ver "Ver resultados" \
-                 Setup "Configuración" \
-                 Pendrive "Exportar resultados" \
-                 Cerrar "Cerrar sesión" \
-                 Finalizar "Apagar equipo" 2>"${FICHERO_TEMPORAL}"\
+   dialog --colors --clear --backtitle "$PROGRAMA $VERSION" \
+          --title "[$PROGRAMA $VERSION ]" \
+          --menu "$textoMainOption" 18 60 14 \
+                 $DIALOG_MAIN_AUTO_SHORT "$textoMainAuto" \
+                 $DIALOG_MAIN_TCP_SHORT "$textoMainTcp" \
+                 $DIALOG_MAIN_UDP_SHORT "$textoMainUdp" \
+                 $DIALOG_MAIN_EXPERT_SHORT "$DIALOG_MAIN_EXPERT" \
+                 $DIALOG_MAIN_SHOW_SHORT "$DIALOG_MAIN_SHOW" \
+                 $DIALOG_MAIN_BINARIO_SHORT "$textoMainBinario" \
+                 $DIALOG_MAIN_SETUP_SHORT "$DIALOG_MAIN_SETUP" \
+                 $DIALOG_MAIN_PENDRIVE_SHORT "$DIALOG_MAIN_PENDRIVE" \
+                 $DIALOG_MAIN_LOGOUT_SHORT "$DIALOG_MAIN_LOGOUT" \
+                 $DIALOG_MAIN_SHUTDOWN_SHORT "$DIALOG_MAIN_SHUTDOWN" 2>"${FICHERO_TEMPORAL}"\
 
    menuItem=$(<"${FICHERO_TEMPORAL}")
 
    case $menuItem in
-           Auto) testIperfRemotoAuto;;
-           TCP) testIperfRemotoTcp;;
-           UDP) testIperfRemotoUdp;;
-           Experto) testComandoIperf;;
-           Ver) verResultados;;
-           Setup) menuConfiguracion;;
-           Pendrive) copiarResultadosEnPendrive;;
-	   Cerrar) cerrarSesion;; 
-           Finalizar) apagarEquipo;;
+           $DIALOG_MAIN_AUTO_SHORT) testIperfRemotoAuto;;
+           $DIALOG_MAIN_TCP_SHORT) testIperfRemotoTcp;;
+           $DIALOG_MAIN_UDP_SHORT) testIperfRemotoUdp;;
+           $DIALOG_MAIN_EXPERT_SHORT) testComandoIperf;;
+           $DIALOG_MAIN_SHOW_SHORT) verResultados;;
+           $DIALOG_MAIN_BINARIO_SHORT) if [ "$iperfVersionActiva" = "3" ]; then iperfVersionActiva="2"; else iperfVersionActiva="3"; fi;;
+           $DIALOG_MAIN_SETUP_SHORT) menuConfiguracion;;
+           $DIALOG_MAIN_PENDRIVE_SHORT) copiarResultadosEnPendrive;;
+	   $DIALOG_MAIN_LOGOUT_SHORT) cerrarSesion;; 
+           $DIALOG_MAIN_SHUTDOWN_SHORT) apagarEquipo;;
    esac
 
 done

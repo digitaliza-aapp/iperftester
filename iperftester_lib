@@ -2,31 +2,39 @@
 
 ############################################################################################
 #                                                                                          #
-# iperftester_lib   : Libreria para iperftester                                            #
+# iperftester_lib   : Librería para iperftester                                            #
 #                                                                                          #
 #------------------------------------------------------------------------------------------#
 #                                                                                          #
-# Versión       : 01r00                                                                    #
-# Fecha         : 3/febrero/2018                                                           #
 # Autor         : Felipe Muñoz Brieva - fmbrieva@gmail.com                                 #
 #                                                                                          #
 #------------------------------------------------------------------------------------------#
 #                                                                                          #
 # Modificaciones:                                                                          #
 #                                                                                          #
-# --01r00---      Version inicial                                                          #
-# 03/02/2018                                                                               #
+# 03/02/2018      Versión inicial                                                          #
 #   Felipe                                                                                 #
+#                                                                                          #
+# 28/02/2018      Añadir textos personalizados por idioma                                  #
+#   Felipe                                                                                 #
+#                                                                                          #
+# 08/03/2018      Permitir cambiar binarios para tests en modo AUTO, TCP y UDP             #
+#   Felipe        Añadir Listen Port para pruebas reverse en iperf version 2               #
 #                                                                                          #
 ############################################################################################
 
+### PROGRAMA y VERSION - Son las unicas variables que pueden aparecer en lang/xx
+PROGRAMA="Iperftester"
+VERSION=v01r03
+
+IPERF3_COMPILE="3.5+"
+IPERF_COMPILE="2.0.10"
+
+### Includes
 . /opt/iperftester/utilidades_lib
+. /opt/iperftester/lang/es
 
 ### Parametros iniciales -------------------------------------------------------------------
-
-### Version
-PROGRAMA="Iperftester"
-VERSION=v00r01
 
 ### Local ----------------------------------------------------------------------------------
 
@@ -54,8 +62,6 @@ IPERF_COMANDO="iperf"
 IPERF3_COMANDO="iperf3"
 
 IPERF_VERSION_DEFECTO="3"
-IPERF_VERSION_2=off
-IPERF_VERSION_3=on
 
 HOST_REMOTO_IPERF_TCP_PORT=5001
 HOST_REMOTO_IPERF_UDP_PORT=5002
@@ -63,6 +69,7 @@ HOST_REMOTO_IPERF3_PORT=5201
 
 HOST_LOCAL_IPERF_TCP_PORT=5001
 HOST_LOCAL_IPERF_UDP_PORT=5002
+HOST_LOCAL_IPERF_LISTEN_PORT=5003
 HOST_LOCAL_IPERF3_PORT=5201
 
 ### reporte de tiempo e intervalo
@@ -99,7 +106,7 @@ FICHERO_COMANDO_SALIDA=$RUTA_TEMPORAL/iperftester_comando_salida
 
 iperfVersionActiva=$IPERF_VERSION_DEFECTO
 numeroTest=0
-sinoAnadirUltimoLog="n"
+sinoAnadirUltimoLog="$VALUE_NO"
 
 ### Evitar problemas con los permisos de los ficheros modificados desde root
 ### Se ha cambiado a .bash_logout
@@ -185,7 +192,7 @@ function actualizarParametros()
      hostRemotoIperfUdpPort=$HOST_REMOTO_IPERF_UDP_PORT
      hostRemotoIperf3Port=$HOST_REMOTO_IPERF3_PORT
 
-     echo "hostRemotoIperfTcpPort $hostRemotoIperfTcpPort" >> $FICHERO_HOST_REMOTO_PORT
+     echo "hostRemotoIperfTcpPort $hostRemotoIperfTcpPort" > $FICHERO_HOST_REMOTO_PORT
      echo "hostRemotoIperfUdpPort $hostRemotoIperfUdpPort" >> $FICHERO_HOST_REMOTO_PORT
      echo "hostRemotoIperf3Port $hostRemotoIperf3Port" >> $FICHERO_HOST_REMOTO_PORT
 
@@ -196,16 +203,19 @@ function actualizarParametros()
 
      leerValor hostLocalIperfTcpPort $FICHERO_HOST_LOCAL_PORT; if [ -n $tmp ]; then hostLocalIperfTcpPort=$tmp;  fi
      leerValor hostLocalIperfUdpPort $FICHERO_HOST_LOCAL_PORT; if [ -n $tmp ]; then hostLocalIperfUdpPort=$tmp; fi
+     leerValor hostLocalIperfListenPort $FICHERO_HOST_LOCAL_PORT; if [ -n $tmp ]; then hostLocalIperfListenPort=$tmp; fi
      leerValor hostLocalIperf3Port $FICHERO_HOST_LOCAL_PORT; if [ -n $tmp ]; then hostLocalIperf3Port=$tmp; fi
 
    else
 
      hostLocalIperfTcpPort=$HOST_LOCAL_IPERF_TCP_PORT
      hostLocalIperfUdpPort=$HOST_LOCAL_IPERF_UDP_PORT
+     hostLocalIperfListenPort=$HOST_LOCAL_IPERF_LISTEN_PORT
      hostLocalIperf3Port=$HOST_LOCAL_IPERF3_PORT
 
-     echo "hostLocalIperfTcpPort $hostLocalIperfTcpPort" >> $FICHERO_HOST_LOCAL_PORT
+     echo "hostLocalIperfTcpPort $hostLocalIperfTcpPort" > $FICHERO_HOST_LOCAL_PORT
      echo "hostLocalIperfUdpPort $hostLocalIperfUdpPort" >> $FICHERO_HOST_LOCAL_PORT
+     echo "hostLocalIperfListenPort $hostLocalIperfListenPort" >> $FICHERO_HOST_LOCAL_PORT
      echo "hostLocalIperf3Port $hostLocalIperf3Port" >> $FICHERO_HOST_LOCAL_PORT
 
   fi
@@ -235,13 +245,13 @@ function leerConfigurarHost()
 {
 
     actualizarParametros
-    leerValorIp "Direccion IP" "Direccion IP del equipo" 0 0 $hostLocalIp
+    leerValorIp "$MSG_IP_SHORT" "$MSG_IP" 0 0 $hostLocalIp
     if [ "$valor" == "$BOTON_CANCELAR" ]; then return; fi
     hostLocalIp=$valor
-    leerValorIp "Mascara" "Máscara del equipo" 0 0 $hostLocalMascara
+    leerValorIp "$MSG_MASK_SHORT" "$MSG_MASK" 0 0 $hostLocalMascara
     if [ "$valor" == "$BOTON_CANCELAR" ]; then return; fi
     hostLocalMascara=$valor
-    leerValorIp "Gateway" "Gateway del equipo" 0 0 $hostLocalGateway
+    leerValorIp "$MSG_GATEWAY_SHORT" "$MSG_GATEWAY" 0 0 $hostLocalGateway
     if [ "$valor" == "$BOTON_CANCELAR" ]; then return; fi
     hostLocalGateway=$valor
 
@@ -255,16 +265,16 @@ function leerConfigurarHost()
     >$FICHERO_TEMPORAL
 
     echo                                                                               > $FICHERO_TEMPORAL
-    echo "    Los valores para realizar los test son:                             "   >> $FICHERO_TEMPORAL
+    echo "$MSG_HOST_NETWORK_CONFIG_01"                                                >> $FICHERO_TEMPORAL
     echo                                                                              >> $FICHERO_TEMPORAL
-    echo "         Dirección IP:                    $hostLocalIp"                     >> $FICHERO_TEMPORAL
-    echo "         Mascara:                         $hostLocalMascara"                >> $FICHERO_TEMPORAL
-    echo "         GateWay:                         $hostLocalGateway"                >> $FICHERO_TEMPORAL
+    echo "$MSG_HOST_NETWORK_CONFIG_02 $hostLocalIp"                                   >> $FICHERO_TEMPORAL
+    echo "$MSG_HOST_NETWORK_CONFIG_03 $hostLocalMascara"                              >> $FICHERO_TEMPORAL
+    echo "$MSG_HOST_NETWORK_CONFIG_04 $hostLocalGateway"                              >> $FICHERO_TEMPORAL
 
     if [ "$usuario" == "root" ]; then
-       echo "         DNS:                             $hostLocalDns    "             >> $FICHERO_TEMPORAL
+       echo "$MSG_HOST_NETWORK_CONFIG_05 $hostLocalDns"                               >> $FICHERO_TEMPORAL
     fi
-
+ 
     dialog --textbox $FICHERO_TEMPORAL 0 0
 
     ### Configurar entorno de red
@@ -283,7 +293,7 @@ function leerConfigurarHost()
 function leerConfigurarHostDns()
 {
 
-    leerValorIp "Servidor DNS" "Servidor DNS (Solo si necesita resolución de nombres)" 0 60 "$hostLocalDns" "s"
+    leerValorIp "$MSG_DNS_SHORT" "$MSG_DNS" 0 60 "$hostLocalDns" "s"
     if [ "$valor" == "$BOTON_CANCELAR" ]; then return; fi
     hostLocalDns=$valor
 
@@ -299,18 +309,22 @@ function leerConfigurarHostDns()
 function leerConfigurarPuertosLocales()
 {
 
-    leerValorNumero "Puerto del servidor iperf local TCP" "Puerto del servidor iperf local TCP" 0 0 $hostLocalIperfTcpPort
+    leerValorNumero "$MSG_IPERF_TCP_PORT_LOCAL_SHORT" "$MSG_IPERF_TCP_PORT_LOCAL" 0 0 $hostLocalIperfTcpPort
     if [ "$valor" == "$BOTON_CANCELAR" ]; then return; fi
     hostLocalIperfTcpPort=$valor
-    leerValorNumero "Puerto del servidor iperf local UDP" "Puerto del servidor iperf local UDP" 0 0 $hostLocalIperfUdpPort
+    leerValorNumero "$MSG_IPERF_UDP_PORT_LOCAL_SHORT" "$MSG_IPERF_UDP_PORT_LOCAL" 0 0 $hostLocalIperfUdpPort
     if [ "$valor" == "$BOTON_CANCELAR" ]; then return; fi
     hostLocalIperfUdpPort=$valor
-    leerValorNumero "Puerto del servidor iperf3 local" "Puerto del servidor iperf3 local" 0 0 $hostLocalIperf3Port
+    leerValorNumero "$MSG_IPERF_LISTEN_PORT_LOCAL_SHORT" "$MSG_IPERF_LISTEN_PORT_LOCAL" 0 0 $hostLocalIperfListenPort
+    if [ "$valor" == "$BOTON_CANCELAR" ]; then return; fi
+    hostLocalIperfListenPort=$valor
+    leerValorNumero "$MSG_IPERF3_PORT_LOCAL_SHORT" "$MSG_IPERF3_PORT_LOCAL" 0 0 $hostLocalIperf3Port
     if [ "$valor" == "$BOTON_CANCELAR" ]; then return; fi
     hostLocalIperf3Port=$valor
 
     echo "hostLocalIperfTcpPort $hostLocalIperfTcpPort" >> $FICHERO_HOST_LOCAL_PORT
     echo "hostLocalIperfUdpPort $hostLocalIperfUdpPort" >> $FICHERO_HOST_LOCAL_PORT
+    echo "hostLocalIperfListenPort $hostLocalIperfListenPort" >> $FICHERO_HOST_LOCAL_PORT
     echo "hostLocalIperf3Port $hostLocalIperf3Port" >> $FICHERO_HOST_LOCAL_PORT
 
     reiniciarServidoresIperf
@@ -321,13 +335,13 @@ function leerConfigurarPuertosLocales()
 function leerConfigurarPuertosRemotos()
 {
 
-    leerValorNumero "Puerto del servidor iperf remoto TCP" "Puerto del servidor iperf remoto TCP" 0 0 $hostRemotoIperfTcpPort
+    leerValorNumero "$MSG_IPERF_TCP_PORT_REMOTO_SHORT" "$MSG_IPERF_TCP_PORT_REMOTO" 0 0 $hostRemotoIperfTcpPort
     if [ "$valor" == "$BOTON_CANCELAR" ]; then return; fi
     hostRemotoIperfTcpPort=$valor
-    leerValorNumero "Puerto del servidor iperf remoto UDP" "Puerto del servidor iperf remoto UDP" 0 0 $hostRemotoIperfUdpPort
+    leerValorNumero "$MSG_IPERF_UDP_PORT_REMOTO_SHORT" "$MSG_IPERF_UDP_PORT_REMOTO" 0 0 $hostRemotoIperfUdpPort
     if [ "$valor" == "$BOTON_CANCELAR" ]; then return; fi
     hostRemotoIperfUdpPort=$valor
-    leerValorNumero "Puerto del servidor iperf3 remoto" "Puerto del servidor iperf3 remoto" 0 0 $hostRemotoIperf3Port
+    leerValorNumero "$MSG_IPERF3_PORT_REMOTO_SHORT" "$MSG_IPERF3_PORT_REMOTO" 0 0 $hostRemotoIperf3Port
     if [ "$valor" == "$BOTON_CANCELAR" ]; then return; fi
     hostRemotoIperf3Port=$valor
 
@@ -341,10 +355,10 @@ function leerConfigurarPuertosRemotos()
 function leerConfigurarTiempoIntervalo()
 {
 
-    leerValorNumero "Duración de la prueba en segundos" "Duración de la prueba en segundos" 0 0 $iperfReporteTiempo
+    leerValorNumero "$MSG_TEST_DURATION_SHORT" "$MSG_TEST_DURATION" 0 0 $iperfReporteTiempo
     if [ "$valor" == "$BOTON_CANCELAR" ]; then return; fi
     iperfReporteTiempo=$valor
-    leerValorNumero "Intervalo de notificaciones en segundos" "Intervalo de notificaciones en segundos" 0 0 $iperfReporteIntervalo
+    leerValorNumero "$MSG_TEST_INTERVAL_SHORT" "$MSG_TEST_INTERVAL" 0 0 $iperfReporteIntervalo
     if [ "$valor" == "$BOTON_CANCELAR" ]; then return; fi
     iperfReporteIntervalo=$valor
 
@@ -358,16 +372,16 @@ function leerConfigurarTiempoIntervalo()
 function leerConfigurarPassword()
 {
 
-    leerValorPassword "Password"
+    leerValorPassword "$MSG_PASSWORD"
     if [ "$valor" == "$BOTON_CANCELAR" ]; then return; fi
     newPasswd=$valor
 
-    leerValorPassword "Repetir password"
+    leerValorPassword "$MSG_PASSWORD_REPEAT"
     if [ "$valor" == "$BOTON_CANCELAR" ]; then return; fi
     checkNewPasswd=$valor
 
     if [ "$newPasswd" != "$checkNewPasswd" ]; then
-       mensajeDatoErroneo "Password_no_coinciden"
+       mensajeDatoErroneo "$MSG_PASSWORD_INCORRECT"
        leerConfigurarPassword
     fi
 
@@ -381,7 +395,7 @@ function leerConfigurarPassword()
 function verServidoresIperf()
 {
 
-    ps -ax | grep iperf | grep -v tty | dialog --programbox "Servidores iperf en ejecución" 20 100
+    ps -ax | grep iperf | grep -v tty | dialog --programbox "$DIALOG_IPERF_RUNNING" 20 100
 
 }
 
@@ -426,13 +440,13 @@ function testIperfRemotoAuto()
 
     actualizarParametros   
 
-    leerValorTexto "Nombre de la prueba o identifidor de la red" "Nombre de la prueba o identificador de la red" 8 60 $networkTestName
+    leerValorTexto "$MSG_TEST_NAME_SHORT" "$MSG_TEST_NAME" 8 60 $networkTestName
     if [ "$valor" == "$BOTON_CANCELAR" ]; then return; fi
     networkTestName=`echo "$valor" | tr ' ' _ `
-    leerValorIp "Direccion IP del servidor remoto" "Direccion IP del servidor remoto" 0 0 $networkTestIp
+    leerValorIp "$MSG_IP_REMOTE_SHORT" "$MSG_IP_REMOTE" 0 0 $networkTestIp
     if [ "$valor" == "$BOTON_CANCELAR" ]; then return; fi
     networkTestIp=$valor
-    leerValorAnchoBanda "Ancho de banda a generar en la linea" "Ancho de banda a generar en la línea (K Kilobits/sec  / M Megabits/sec)" 8 78 $networkTestAnchoBanda
+    leerValorAnchoBanda "$MSG_BANDWIDTH_SHORT" "$MSG_BANDWIDTH" 8 78 $networkTestAnchoBanda
     if [ "$valor" == "$BOTON_CANCELAR" ]; then return; fi
     networkTestAnchoBanda=$valor
 
@@ -444,28 +458,41 @@ function testIperfRemotoAuto()
 
     ### La prueba automatica solamente se realiza con comandos iperf3
 
-    ### Test TCP subida (1)
     ### El primer iperf es el que debe crear la cabecera del log
-    anadirUltimoLog="n"
-    comandoIperf3="$IPERF3_COMANDO -c $networkTestIp -p $hostRemotoIperf3Port -t $iperfReporteTiempo -i $iperfReporteIntervalo "
-    iperfVersionActiva="3"
-    crearResultadoLog
-    anadirUltimoLog="s"
+    anadirUltimoLog="$VALUE_NO"
+
+    if [ "$iperfVersionActiva" == "3" ]; then
+
+        ### Test TCP subida (1)
+        comandoIperf3="$IPERF3_COMANDO -c $networkTestIp -p $hostRemotoIperf3Port -t $iperfReporteTiempo -i $iperfReporteIntervalo "
+        crearResultadoLog
+        anadirUltimoLog=$VALUE_YES
     
-    ### Test TCP bajada (2)
-    comandoIperf3="$IPERF3_COMANDO -c $networkTestIp -p $hostRemotoIperf3Port -t $iperfReporteTiempo -i $iperfReporteIntervalo  -R "
-    iperfVersionActiva="3"
-    crearResultadoLog
+        ### Test TCP bajada (2)
+        comandoIperf3="$IPERF3_COMANDO -c $networkTestIp -p $hostRemotoIperf3Port -t $iperfReporteTiempo -i $iperfReporteIntervalo  -R "
+        crearResultadoLog
 
-    ### Test UDP subida (3)
-    comandoIperf3="$IPERF3_COMANDO -c $networkTestIp -p $hostRemotoIperf3Port -t $iperfReporteTiempo -i $iperfReporteIntervalo  -b $networkTestAnchoBanda -u "
-    iperfVersionActiva="3"
-    crearResultadoLog
+        ### Test UDP subida (3)
 
-    ### Test UDP bajada (4)
-    comandoIperf3="$IPERF3_COMANDO -c $networkTestIp -p $hostRemotoIperf3Port -t $iperfReporteTiempo -i $iperfReporteIntervalo  -b $networkTestAnchoBanda -u -R "
-    iperfVersionActiva="3"
-    crearResultadoLog
+        comandoIperf3="$IPERF3_COMANDO -c $networkTestIp -p $hostRemotoIperf3Port -t $iperfReporteTiempo -i $iperfReporteIntervalo  -b $networkTestAnchoBanda -u "
+        crearResultadoLog
+
+        ### Test UDP bajada (4)
+        comandoIperf3="$IPERF3_COMANDO -c $networkTestIp -p $hostRemotoIperf3Port -t $iperfReporteTiempo -i $iperfReporteIntervalo  -b $networkTestAnchoBanda -u -R "
+        crearResultadoLog
+
+      else
+
+        ### Test TCP subida y bajada 
+        comandoIperf="$IPERF_COMANDO -c $networkTestIp -p $hostRemotoIperfTcpPort -t $iperfReporteTiempo -i $iperfReporteIntervalo -r -L $hostLocalIperfListenPort "
+        crearResultadoLog
+        anadirUltimoLog=$VALUE_YES
+
+        ### Test UDP subida y bajada 
+        comandoIperf="$IPERF_COMANDO -c $networkTestIp -p $hostRemotoIperfUdpPort -t $iperfReporteTiempo -i $iperfReporteIntervalo  -b $networkTestAnchoBanda -u -r -L $hostLocalIperfListenPort "
+        crearResultadoLog
+
+    fi
 
     comandoIperf=""
     comandoIperf3=""
@@ -480,23 +507,23 @@ function testIperfRemotoTcp()
 
     if [ -z "$networkTestName" ]; then
 
-       leerValorTexto "Nombre de la prueba o identifidor de la red" "Nombre de la prueba o identificador de la red" 8 60 $networkTestName
+       leerValorTexto "$MSG_TEST_NAME_SHORT" "$MSG_TEST_NAME" 8 60 $networkTestName
        if [ "$valor" == "$BOTON_CANCELAR" ]; then return; fi
        networkTestName=`echo "$valor" | tr ' ' _ `
-       anadirUltimoLog="n"
+       anadirUltimoLog="$VALUE_NO"
      else
-       leerValorSiNo "Añadir a log existente" "Añadir resultados al último fichero de log?" 6 50
+       leerValorSiNo "$MSG_LOG_ADD_SHORT" "$MSG_LOG_ADD" 6 50
        if [ "$valor" == "$BOTON_CANCELAR" ]; then return; fi
        anadirUltimoLog=$valor
-       if [ "$anadirUltimoLog" == "n" ]; then
-          leerValorTexto "Nombre de la prueba identificación de la red" "Nombre de la prueba o identificación de la red" 8 60 $networkTestName
+       if [ "$anadirUltimoLog" == "$VALUE_NO" ]; then
+          leerValorTexto "$MSG_TEST_NAME_SHORT" "$MSG_TEST_NAME" 8 60 $networkTestName
           if [ "$valor" == "$BOTON_CANCELAR" ]; then return; fi
           networkTestName=`echo "$valor" | tr ' ' _ `
        fi
 
     fi
 
-    leerValorIp "Direccion IP del servidor remoto" "Direccion IP del servidor remoto" 0 0 $networkTestIp
+    leerValorIp "$MSG_IP_REMOTE_SHORT" "$MSG_IP_REMOTE_SHORT" 0 0 $networkTestIp
     if [ "$valor" == "$BOTON_CANCELAR" ]; then return; fi
     networkTestIp=$valor
     
@@ -507,15 +534,21 @@ function testIperfRemotoTcp()
     echo "networkTestIp $networkTestIp" > $FICHERO_NETWORK_TEST
     echo "networkTestName $networkTestName" >> $FICHERO_NETWORK_TEST
 
-    if [ "$networkTestBidireccional" == "s" ]; then
-       comandoIperf="$IPERF_COMANDO -c $networkTestIp -p $hostRemotoIperfTcpPort -t $iperfReporteTiempo -i $iperfReporteIntervalo -r "
-       comandoIperf3="$IPERF3_COMANDO -c $networkTestIp -p $hostRemotoIperf3Port -t $iperfReporteTiempo -i $iperfReporteIntervalo -R "
-      else 
-       comandoIperf="$IPERF_COMANDO -c $networkTestIp -p $hostRemotoIperfTcpPort -t $iperfReporteTiempo -i $iperfReporteIntervalo "
-       comandoIperf3="$IPERF3_COMANDO -c $networkTestIp -p $hostRemotoIperf3Port -t $iperfReporteTiempo -i $iperfReporteIntervalo "
-    fi
+    if [ "$iperfVersionActiva" == "3" ]; then
 
-    crearResultadoLog
+        comandoIperf3="$IPERF3_COMANDO -c $networkTestIp -p $hostRemotoIperf3Port -t $iperfReporteTiempo -i $iperfReporteIntervalo "
+        crearResultadoLog
+
+        comandoIperf3="$IPERF3_COMANDO -c $networkTestIp -p $hostRemotoIperf3Port -t $iperfReporteTiempo -i $iperfReporteIntervalo -R "
+        anadirUltimoLog=$VALUE_YES
+        crearResultadoLog
+
+      else
+
+        comandoIperf="$IPERF_COMANDO -c $networkTestIp -p $hostRemotoIperfTcpPort -t $iperfReporteTiempo -i $iperfReporteIntervalo -r -L $hostLocalIperfListenPort "
+        crearResultadoLog
+    
+    fi
 
     comandoIperf=""
     comandoIperf3=""
@@ -530,26 +563,26 @@ function testIperfRemotoUdp()
 
     if [ -z "$networkTestName" ]; then
 
-       leerValorTexto "Nombre de la prueba o identifidor de la red" "Nombre de la prueba o identificador de la red" 8 60 $networkTestName
+       leerValorTexto "$MSG_TEST_NAME_SHORT" "$MSG_TEST_NAME_SHORT" 8 60 $networkTestName
        if [ "$valor" == "$BOTON_CANCELAR" ]; then return; fi
        networkTestName=`echo "$valor" | tr ' ' _ `
-       anadirUltimoLog="n"
+       anadirUltimoLog="$VALUE_NO"
      else
-       leerValorSiNo "Añadir a log existente" "Añadir resultados al último fichero de log?" 6 50
+       leerValorSiNo "$MSG_LOG_ADD_SHORT" "$MSG_LOG_ADD" 6 50
        if [ "$valor" == "$BOTON_CANCELAR" ]; then return; fi
        anadirUltimoLog=$valor
-       if [ "$anadirUltimoLog" == "n" ]; then
-          leerValorTexto "Nombre de la prueba identificación de la red" "Nombre de la prueba o identificación de la red" 8 60 $networkTestName
+       if [ "$anadirUltimoLog" == "$VALUE_NO" ]; then
+          leerValorTexto "$MSG_TEST_NAME_SHORT" "$MSG_TEST_NAME" 8 60 $networkTestName
           if [ "$valor" == "$BOTON_CANCELAR" ]; then return; fi
           networkTestName=`echo "$valor" | tr ' ' _ `
        fi
 
     fi
 
-    leerValorIp "Direccion IP del servidor remoto" "Direccion IP del servidor remoto" 0 0 $networkTestIp
+    leerValorIp "$MSG_IP_REMOTE_SHORT" "$MSG_IP_REMOTE" 0 0 $networkTestIp
     if [ "$valor" == "$BOTON_CANCELAR" ]; then return; fi
     networkTestIp=$valor
-    leerValorAnchoBanda "Ancho de banda a generar en la linea" "Ancho de banda a generar en la línea (K Kilobits/sec  / M Megabits/sec)" 8 78 $networkTestAnchoBanda
+    leerValorAnchoBanda "$MSG_BANDWIDTH_SHORT" "$MSG_BANDWIDTH" 8 78 $networkTestAnchoBanda
     if [ "$valor" == "$BOTON_CANCELAR" ]; then return; fi
     networkTestAnchoBanda=$valor
 
@@ -562,15 +595,21 @@ function testIperfRemotoUdp()
 
     echo "networkTestAnchoBanda $networkTestAnchoBanda" > $FICHERO_NETWORK_TEST_ANCHO_BANDA
 
-    if [ "$networkTestBidireccional" == "s" ]; then
-       comandoIperf="$IPERF_COMANDO -c $networkTestIp -p $hostRemotoIperfUdpPort -t $iperfReporteTiempo -i $iperfReporteIntervalo -b $networkTestAnchoBanda -r -u "
-       comandoIperf3="$IPERF3_COMANDO -c $networkTestIp -p $hostRemotoIperf3Port -t $iperfReporteTiempo -i $iperfReporteIntervalo -b $networkTestAnchoBanda -R -u"
-      else 
-       comandoIperf="$IPERF_COMANDO -c $networkTestIp -p $hostRemotoIperfUdpPort -t $iperfReporteTiempo -i $iperfReporteIntervalo  -b $networkTestAnchoBanda -u "
-       comandoIperf3="$IPERF3_COMANDO -c $networkTestIp -p $hostRemotoIperf3Port -t $iperfReporteTiempo -i $iperfReporteIntervalo  -b $networkTestAnchoBanda -u "
-    fi
+    if [ "$iperfVersionActiva" == "3" ]; then
 
-    crearResultadoLog
+        comandoIperf3="$IPERF3_COMANDO -c $networkTestIp -p $hostRemotoIperf3Port -t $iperfReporteTiempo -i $iperfReporteIntervalo  -b $networkTestAnchoBanda -u "
+        crearResultadoLog
+
+        comandoIperf3="$IPERF3_COMANDO -c $networkTestIp -p $hostRemotoIperf3Port -t $iperfReporteTiempo -i $iperfReporteIntervalo -b $networkTestAnchoBanda -R -u"
+        anadirUltimoLog=$VALUE_YES
+        crearResultadoLog
+
+       else
+
+        comandoIperf="$IPERF_COMANDO -c $networkTestIp -p $hostRemotoIperfUdpPort -t $iperfReporteTiempo -i $iperfReporteIntervalo  -b $networkTestAnchoBanda -u -r -L $hostLocalIperfListenPort "
+        crearResultadoLog
+
+    fi
 
     comandoIperf=""
     comandoIperf3=""
@@ -608,7 +647,7 @@ function testComandoIperf()
 
     actualizarParametros
  
-    leerValorTexto "Comando iperf" "(Modo experto) Teclear comando iperf" 0 100
+    leerValorTexto "$MSG_IPERF_EXPERT_SHORT" "$MSG_IPERF_EXPERT" 0 100
     if [ "$valor" == "$BOTON_CANCELAR" ]; then return; fi
     comandoTecleado="$valor"   
 
@@ -617,7 +656,7 @@ function testComandoIperf()
     if validarIp $parametroEncontrado; then 
        networkTestIp=$parametroEncontrado
      else 
-       mensajeDatoErroneo "Direccion_IP_erronea"
+       mensajeDatoErroneo "$MSG_IP_ERROR"
        return 
     fi
 
@@ -625,7 +664,7 @@ function testComandoIperf()
     if validarNumero $parametroEncontrado; then 
        iperfReporteTiempo=$parametroEncontrado
      else 
-      mensajeDatoErroneo "Tiempo_erroneo"
+      mensajeDatoErroneo "$MSG_ERROR_TIME"
       return 
     fi
 
@@ -647,16 +686,16 @@ function testComandoIperf()
 
     if [ -z "$networkTestName" ]; then
 
-       leerValorTexto "Nombre de la prueba o identifidor de la red" "Nombre de la prueba o identificador de la red" 8 60 $networkTestName
+       leerValorTexto "$MSG_TEST_NAME_SHORT" "$MSG_TEST_NAME" 8 60 $networkTestName
        if [ "$valor" == "$BOTON_CANCELAR" ]; then return; fi
        networkTestName=`echo "$valor" | tr ' ' _ `
-       anadirUltimoLog="n"
+       anadirUltimoLog="$VALUE_NO"
      else
-       leerValorSiNo "Añadir a log existente" "Añadir resultados al último fichero de log?" 6 50
+       leerValorSiNo "$MSG_LOG_ADD_SHORT" "$MSG_LOG_ADD" 6 50
        if [ "$valor" == "$BOTON_CANCELAR" ]; then return; fi
        anadirUltimoLog=$valor
-       if [ "$anadirUltimoLog" == "n" ]; then
-          leerValorTexto "Nombre de la prueba identificación de la red" "Nombre de la prueba o identificación de la red" 8 60 $networkTestName
+       if [ "$anadirUltimoLog" == "$VALUE_NO" ]; then
+          leerValorTexto "$MSG_TEST_NAME_SHORT" "$MSG_TEST_NAME" 8 60 $networkTestName
           if [ "$valor" == "$BOTON_CANCELAR" ]; then return; fi
           networkTestName=`echo "$valor" | tr ' ' _ `
        fi
@@ -700,9 +739,9 @@ function ejecutarComandoConGauge()
 cat <<EOF
 XXX
 $progreso
-Ejecutando: $comando
+$MSG_RUNNING $comando
 `echo`
-Tiempo para finalizar `expr $tiempoTotalEjecucion - $segundosTranscurridos` segundos <-------------------
+$MSG_TIME_TO_END `expr $tiempoTotalEjecucion - $segundosTranscurridos` $MSG_SECONDS 
 `echo`
 XXX
 EOF
@@ -721,9 +760,9 @@ function logComando()
 
      numeroTest=$((numeroTest+1))
 
-     echo "==================================================================="  >> $ficheroLog     
-     echo "B.$numeroTest) Comando: $comando                                   "  >> $ficheroLog
-     echo "==================================================================="  >> $ficheroLog     
+     echo "$LOG_LINE_EQUAL"                                                      >> $ficheroLog     
+     echo "$LOG_B_TESTS_COMMAND_01$numeroTest $LOG_B_TESTS_COMMAND_02$comando"   >> $ficheroLog
+     echo "$LOG_LINE_EQUAL"                                                      >> $ficheroLog     
      echo "                                                                   "  >> $ficheroLog
 
      if [ -z "$1" ]; then
@@ -746,32 +785,32 @@ function logCabecera()
 
      >$ficheroLog     
 
-     echo "###################################################################"  >> $ficheroLog     
+     echo "$LOG_LINE_HASHTAG"                                                    >> $ficheroLog     
      echo "                                                                   "  >> $ficheroLog
-     echo "-------------------------------------------------------------------"  >> $ficheroLog     
-     echo "Resultados $PROGRAMA - $VERSION                                    "  >> $ficheroLog
-     echo "-------------------------------------------------------------------"  >> $ficheroLog
+     echo "$LOG_LINE_HYPHEN_MINUS"                                               >> $ficheroLog     
+     echo "$LOG_PROGRAM_VERSION"                                                 >> $ficheroLog
+     echo "$LOG_LINE_HYPHEN_MINUS"                                               >> $ficheroLog     
      echo "                                                                   "  >> $ficheroLog
-     echo "Fecha         : $(date)                                            "  >> $ficheroLog
-     echo "Sistema       : $(uname -a)                                        "  >> $ficheroLog
-     echo "Identificador : $networkTestName                                   "  >> $ficheroLog
-     echo "Versión iperf3: $(iperf3 -v | head -1)                             "  >> $ficheroLog
-     echo "        iperf : iperf version 2.0.10 (11 Aug 2017) pthreads        "  >> $ficheroLog
+     echo "$LOG_DATE $(date)"                                                    >> $ficheroLog
+     echo "$LOG_SYSTEM $(uname -a)"                                              >> $ficheroLog
+     echo "$LOG_IDENTIFIER $networkTestName"                                     >> $ficheroLog
+     echo "$LOG_IPERF3_VERSION"                                                  >> $ficheroLog
+     echo "$LOG_IPERF_VERSION"                                                   >> $ficheroLog
      echo "                                                                   "  >> $ficheroLog
      echo "                                                                   "  >> $ficheroLog
-     echo "###################################################################"  >> $ficheroLog     
+     echo "$LOG_LINE_HASHTAG"                                                    >> $ficheroLog     
      echo "                                                                   "  >> $ficheroLog
-     echo "A) Hardware                                                        "  >> $ficheroLog
+     echo "$LOG_A_HARDWARE"                                                      >> $ficheroLog
      echo "                                                                   "  >> $ficheroLog
-     echo "A.1) Red                                                           "  >> $ficheroLog
+     echo "$LOG_A1_HARDWARE"                                                     >> $ficheroLog
      echo "                                                                   "  >> $ficheroLog
      echo "$(sudo lshw -class network)                                        "  >> $ficheroLog
      echo "                                                                   "  >> $ficheroLog
      echo "                                                                   "  >> $ficheroLog
-     echo "###################################################################"  >> $ficheroLog     
+     echo "$LOG_LINE_HASHTAG"                                                    >> $ficheroLog     
      echo "                                                                   "  >> $ficheroLog
      echo "                                                                   "  >> $ficheroLog
-     echo "B) TESTS                                                           "  >> $ficheroLog
+     echo "$LOG_B_TEST"                                                          >> $ficheroLog
      echo "                                                                   "  >> $ficheroLog
 
      numeroTest=0
@@ -813,7 +852,7 @@ function verResultados()
        let i=$i+1
        arrayTrabajo+=($i "$line")
     done < <( find $RUTA_RESULTADOS -maxdepth 1 -type f -printf "%f\n" | sort)
-    posicionFichero=$(dialog --title "Resultados de los test" --menu "\n      Escoja un fichero y pulse <enter> para visualizar su contenido" 24 80 17 "${arrayTrabajo[@]}" 3>&2 2>&1 1>&3)
+    posicionFichero=$(dialog --title "$DIALOG_TEST_RESULT" --menu "$DIALOG_CHOOSE_FILE" 24 80 17 "${arrayTrabajo[@]}" 3>&2 2>&1 1>&3)
 
     ficheroParaVisualizar=$(find $RUTA_RESULTADOS -maxdepth 1 -type f -printf "%f\n" | sort | sed -n "`echo "$posicionFichero p" | sed 's/ //'`")
  
@@ -830,7 +869,7 @@ function verResultados()
 function copiarResultadosEnPendrive()
 {
 
-	dialog --stdout --msgbox "Conecte un pendrive al equipo, espere un momento\ny pulse <Aceptar> para continuar..." 7 55; 
+	dialog --stdout --msgbox "$DIALOG_PENDRIVE_CONNECT" 7 55; 
 
     contador=1
     array=()
@@ -842,7 +881,7 @@ function copiarResultadosEnPendrive()
         let contador=contador+1
     done
 
-    cadenaUnidadPendrive=$(dialog --stdout --backtitle "$PROGRAMA $VERSION" --title "Unidades disponibles" --radiolist "Unidades disponibles" 0 0 $contador $radioList);
+    cadenaUnidadPendrive=$(dialog --stdout --backtitle "$PROGRAMA $VERSION" --title "$DIALOG_PENDRIVE_UNITS" --radiolist "$DIALOG_PENDRIVE_UNITS" 0 0 $contador $radioList);
 
     # Extraer de la cadena la unidad del pendrive posicion 5 mas 3 caracteres
     unidadPendrive=${array[$cadenaUnidadPendrive]:5:3}
@@ -862,7 +901,7 @@ function copiarResultadosEnPendrive()
 
        `sudo cp $origen $destino` 
 
-       dialog --stdout --backtitle "$PROGRAMA $VERSION" --msgbox "Desconecte el pendrive cuando haya finalizado el proceso de copia" 6 50;  
+       dialog --stdout --backtitle "$PROGRAMA $VERSION" --msgbox "$DIALOG_PENDRIVE_DISCONNECT" 6 50;  
        sleep 4
 
        `sudo umount $primeraUnidadPendrive`
@@ -874,6 +913,36 @@ function copiarResultadosEnPendrive()
 
 ### Notificaciones ---------------------------------------------------------------------------
 
+### Mensaje proxy 
+function mensajeProxy()
+{
+
+     echo "                                                                                    " >> $FICHERO_TEMPORAL
+     echo "$MSG_PROXY_01"                                                                        >> $FICHERO_TEMPORAL
+     echo "$MSG_PROXY_02"                                                                        >> $FICHERO_TEMPORAL
+     echo "                                                                                    " >> $FICHERO_TEMPORAL
+     echo "$MSG_PROXY_03"                                                                        >> $FICHERO_TEMPORAL
+     echo "$MSG_PROXY_04"                                                                        >> $FICHERO_TEMPORAL
+     echo "                                                                                    " >> $FICHERO_TEMPORAL
+     echo "                                                                                    " >> $FICHERO_TEMPORAL
+
+}
+
+### Mensaje disclaimer 
+function mensajeDisclaimer()
+{
+
+     echo "                                                                                    " >> $FICHERO_TEMPORAL
+     echo "$MSG_DISCLAIMER_01"                                                                   >> $FICHERO_TEMPORAL
+     echo "                                                                                    " >> $FICHERO_TEMPORAL
+     echo "$MSG_DISCLAIMER_02"                                                                   >> $FICHERO_TEMPORAL
+     echo "$MSG_DISCLAIMER_03"                                                                   >> $FICHERO_TEMPORAL
+     echo "$MSG_DISCLAIMER_04"                                                                   >> $FICHERO_TEMPORAL
+     echo "                                                                                    " >> $FICHERO_TEMPORAL
+     echo "                                                                                    " >> $FICHERO_TEMPORAL
+
+}
+
 ### Mensaje inicial iperf
 function mensajeInicialIperf()
 {
@@ -883,25 +952,19 @@ function mensajeInicialIperf()
 
      echo "                                                                                    "  > $FICHERO_TEMPORAL
      echo "                                                                                    " >> $FICHERO_TEMPORAL
-     echo "                                $PROGRAMA ($VERSION)                                " >> $FICHERO_TEMPORAL
+     echo "$MSG_WELCOME_IPERF_01"                                                                >> $FICHERO_TEMPORAL
      echo "                                                                                    " >> $FICHERO_TEMPORAL
      echo "                                                                                    " >> $FICHERO_TEMPORAL
-     echo "     $PROGRAMA  es  un distribución live basada en  Debian para medir el ancho       " >> $FICHERO_TEMPORAL
-     echo "     de banda (throughput) y calidad de un enlace de red mediante iperf.            " >> $FICHERO_TEMPORAL
+     echo "$MSG_WELCOME_IPERF_02"                                                                >> $FICHERO_TEMPORAL
+     echo "$MSG_WELCOME_IPERF_03"                                                                >> $FICHERO_TEMPORAL
      echo "                                                                                    " >> $FICHERO_TEMPORAL
-     echo "     El enlace a examinar  se delimita  por dos  equipos ejecutando $PROGRAMA       " >> $FICHERO_TEMPORAL
-     echo "     uno actuando como cliente y otro como servidor.                                " >> $FICHERO_TEMPORAL
+     echo "$MSG_WELCOME_IPERF_04"                                                                >> $FICHERO_TEMPORAL
+     echo "$MSG_WELCOME_IPERF_05"                                                                >> $FICHERO_TEMPORAL
      echo "                                                                                    " >> $FICHERO_TEMPORAL
-     echo "           Nuevas versiones en https://github.com/fmbrieva/iperftester              " >> $FICHERO_TEMPORAL
+     echo "$MSG_WELCOME_IPERF_06"                                                                >> $FICHERO_TEMPORAL
      echo "                                                                                    " >> $FICHERO_TEMPORAL
-     echo "                                                                                    " >> $FICHERO_TEMPORAL
-     echo "     Exención de responsabilidad:                                                   " >> $FICHERO_TEMPORAL
-     echo "                                                                                    " >> $FICHERO_TEMPORAL
-     echo "     La responsabilidad de los daños y perjuicios de  cualquier naturaleza que      " >> $FICHERO_TEMPORAL
-     echo "     que pudiera  derivarse del uso del LiveCD son del usuario y además deberá      " >> $FICHERO_TEMPORAL
-     echo "     estar autorizado para su uso en su red de datos.                               " >> $FICHERO_TEMPORAL
-     echo "                                                                                    " >> $FICHERO_TEMPORAL
-     echo "                                                                                    " >> $FICHERO_TEMPORAL
+
+     mensajeDisclaimer
 
      dialog --stdout --backtitle "$PROGRAMA $VERSION" --textbox $FICHERO_TEMPORAL 0 0
 
@@ -915,24 +978,19 @@ function mensajeInicialRoot()
      >$FICHERO_TEMPORAL
 
      echo "                                                                                    "  > $FICHERO_TEMPORAL
-     echo "    Herramientas disponibles en el LiveCD                                           " >> $FICHERO_TEMPORAL
-     echo "    -------------------------------------                                           " >> $FICHERO_TEMPORAL
+     echo "$MSG_WELCOME_ROOT_01"                                                                 >> $FICHERO_TEMPORAL
+     echo "$MSG_WELCOME_ROOT_02"                                                                 >> $FICHERO_TEMPORAL
      echo "                                                                                    " >> $FICHERO_TEMPORAL
-     echo "     iperf iperf3 ssh ftp lftp speedtest-cli iproute2 net-tools bridge-utils lshw   " >> $FICHERO_TEMPORAL
-     echo "     iproute2 net-tools  iputils-arping iputils-ping iputils-tracepath  zip unzip   " >> $FICHERO_TEMPORAL
-     echo "     bridge-utils vi vim traceroute ethtool lshw ntfs-3g netcat                     " >> $FICHERO_TEMPORAL
-     echo "                                                                                    " >> $FICHERO_TEMPORAL
-     echo "                                                                                    " >> $FICHERO_TEMPORAL
-     echo "                                                                                    " >> $FICHERO_TEMPORAL
-     echo "    -----------------------------------------------------------------------------   " >> $FICHERO_TEMPORAL
-     echo "                                                                                    " >> $FICHERO_TEMPORAL
-     echo "    Exención de responsabilidad:                                                    " >> $FICHERO_TEMPORAL
-     echo "                                                                                    " >> $FICHERO_TEMPORAL
-     echo "    La responsabilidad de los daños y perjuicios de  cualquier naturaleza que       " >> $FICHERO_TEMPORAL
-     echo "    que pudiera  derivarse del uso del LiveCD son del usuario y además deberá       " >> $FICHERO_TEMPORAL
-     echo "    estar autorizado para su uso en su red de datos.                                " >> $FICHERO_TEMPORAL
+     echo "$MSG_WELCOME_ROOT_03"                                                                 >> $FICHERO_TEMPORAL
+     echo "$MSG_WELCOME_ROOT_04"                                                                 >> $FICHERO_TEMPORAL
+     echo "$MSG_WELCOME_ROOT_05"                                                                 >> $FICHERO_TEMPORAL
      echo "                                                                                    " >> $FICHERO_TEMPORAL
      echo "                                                                                    " >> $FICHERO_TEMPORAL
+     echo "                                                                                    " >> $FICHERO_TEMPORAL
+     echo "$MSG_WELCOME_ROOT_06"                                                                 >> $FICHERO_TEMPORAL
+     echo "                                                                                    " >> $FICHERO_TEMPORAL
+
+     mensajeDisclaimer
 
      dialog --stdout --backtitle "$PROGRAMA $VERSION" --textbox $FICHERO_TEMPORAL 0 0 
 
@@ -945,14 +1003,7 @@ function mensajeFinalRoot()
      # Crear el fichero vacio
      >$FICHERO_TEMPORAL
 
-     echo "                                                                                    " >> $FICHERO_TEMPORAL
-     echo "    Si necesita instalar nuevas herramientas y utiliza un proxy con autenticación   " >> $FICHERO_TEMPORAL
-     echo "    debe ejecutar los siguientes comandos:                                          " >> $FICHERO_TEMPORAL
-     echo "                                                                                    " >> $FICHERO_TEMPORAL
-     echo "      export http_proxy=\"http://usuario:password@ip_del_proxy:puerto_del_proxy\"   " >> $FICHERO_TEMPORAL
-     echo "      export https_proxy=\"http://usuario:password@ip_del_proxy:puerto_del_proxy\"  " >> $FICHERO_TEMPORAL
-     echo "                                                                                    " >> $FICHERO_TEMPORAL
-     echo "                                                                                    " >> $FICHERO_TEMPORAL
+     mensajeProxy
 
      dialog --stdout --backtitle "$PROGRAMA $VERSION" --textbox $FICHERO_TEMPORAL 0 0
 

@@ -6,16 +6,16 @@
 #                                                                                          #
 #------------------------------------------------------------------------------------------#
 #                                                                                          #
-# Versión       : 01r00                                                                    #
-# Fecha         : 3/febrero/2018                                                           #
 # Autor         : Felipe Muñoz Brieva - fmbrieva@gmail.com                                 #
 #                                                                                          #
 #------------------------------------------------------------------------------------------#
 #                                                                                          #
 # Modificaciones:                                                                          #
 #                                                                                          #
-# --01r00--       Version inicial                                                          #
-# 03/02/2018                                                                               #
+# 03/02/2018      Versión inicial                                                          #
+#   Felipe                                                                                 #
+#                                                                                          #
+# 28/02/2018      Añadir textos personalizados por idioma                                  #
 #   Felipe                                                                                 #
 #                                                                                          #
 ############################################################################################
@@ -38,7 +38,7 @@ function leerValor()
 function mensajeDatoErroneo(){
 
   if [ -z "$1" ]; then
-      dialog --stdout --backtitle "$PROGRAMA $VERSION"  --infobox "Valor_introducido_incorrecto" 0 0 ; sleep $TIEMPO_VISUALIZACION_MENSAJE;
+      dialog --stdout --backtitle "$PROGRAMA $VERSION"  --infobox "$DIALOG_DATA_ERROR" 0 0 ; sleep $TIEMPO_VISUALIZACION_MENSAJE;
      else
       dialog --stdout --backtitle "$PROGRAMA $VERSION"  --infobox "$1" 0 0 ; sleep $TIEMPO_VISUALIZACION_MENSAJE;
 
@@ -175,9 +175,9 @@ function leerValorSiNo()
 
     response=$?
     case $response in
-        0) valor="s";;
-        1) valor="n";;
-      255) valor="n";;
+        0) valor=$VALUE_YES;;
+        1) valor=$VALUE_NO;;
+      255) valor=$VALUE_NO;;
     esac
 
 }
@@ -266,7 +266,7 @@ function leerValorPassword()
 function leerVersionIperf()
 {
 
-    version=$(dialog --stdout --backtitle "Versión de iperf" --radiolist "Seleccione versión de iperf" 10 40 2 1 "Versión 3" $IPERF_VERSION_3 2 "Versión 2" $IPERF_VERSION_2) 
+    version=$(dialog --stdout --backtitle "$MSG_IPERF_VERSION_SELECT_SHORT" --radiolist "$MSG_IPERF_SELECT_VERSION" 10 40 2 1 "$MSG_IPERF3_VERSION" $IPERF_VERSION_3 2 "$MSG_IPERF_VERSION" $IPERF_VERSION_2) 
 
     case $version in 
        1) iperfVersionActiva="3";;
@@ -280,7 +280,7 @@ function leerVersionIperf()
 ### Pausa para debugger
 function debugPausa(){
 
-    read -n1 -r -p "Pulsa una tecla para continuar..." pausa
+    read -n1 -r -p "$MSG_ENTER_TO_CONTINUE" pausa
 
 }
 
@@ -308,7 +308,7 @@ function cerrarSesion()
 function apagarEquipo()
 {
 
-    leerValorSiNo "Exportar resultados?" "Ha copiado todos los resultados a un pendrive?" 6 50   
+    leerValorSiNo "$MSG_PENDRIVE_EXPORT_SHORT" "$MSG_PENDRIVE_EXPORT" 6 50   
 
     if [ "$valor" == "s" ]; then
       `sudo init 0`

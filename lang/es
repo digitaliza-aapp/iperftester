@@ -1,0 +1,218 @@
+#!/bin/bash
+
+############################################################################################
+#                                                                                          #
+# lang/es        : Mensajes Iperftester: Español                                           #
+#                                                                                          #
+#------------------------------------------------------------------------------------------#
+#                                                                                          #
+# Autor         : Felipe Muñoz Brieva - fmbrieva@gmail.com                                 #
+#                                                                                          #
+#------------------------------------------------------------------------------------------#
+#                                                                                          #
+# Modificaciones:                                                                          #
+#                                                                                          #
+# 07/03/2018      Versión inicial                                                          #
+#   Felipe                                                                                 #
+#                                                                                          #
+############################################################################################
+
+### VALUES       ###########################################################################
+VALUE_YES="s"
+VALUE_NO="n"
+
+### MSG/HOST ###############################################################################
+MSG_IP_SHORT="Dirección IP"
+MSG_IP="Direccion IP del equipo"
+MSG_MASK_SHORT="Máscara"
+MSG_MASK="Máscara del equipo"
+MSG_GATEWAY_SHORT="Gateway"
+MSG_GATEWAY="Gateway del equipo"
+MSG_DNS_SHORT="Servidor DNS"
+MSG_DNS="Servidor DNS (Solo si necesita resolución de nombres)"
+    
+MSG_HOST_NETWORK_CONFIG_01="    Los valores para realizar los test son:                             "
+MSG_HOST_NETWORK_CONFIG_02="         Dirección IP:                    "
+MSG_HOST_NETWORK_CONFIG_03="         Mascara:                         "
+MSG_HOST_NETWORK_CONFIG_04="         GateWay:                         "
+MSG_HOST_NETWORK_CONFIG_05="         DNS:                             "
+
+### MSG/IPERF  #############################################################################
+MSG_IPERF_TCP_PORT_LOCAL_SHORT="Puerto del servidor iperf local TCP (versión 2)"
+MSG_IPERF_TCP_PORT_LOCAL="Puerto del servidor iperf local TCP (versión 2)"
+MSG_IPERF_UDP_PORT_LOCAL_SHORT="Puerto del servidor iperf local UDP (versión 2)"
+MSG_IPERF_UDP_PORT_LOCAL="Puerto del servidor iperf local UDP (versión 2)"
+MSG_IPERF_LISTEN_PORT_LOCAL_SHORT="Puerto de escucha para envíos desde el servidor (versión 2)"
+MSG_IPERF_LISTEN_PORT_LOCAL="Puerto de escucha para envios desde el servidor (versión 2)"
+
+MSG_IPERF_TCP_PORT_REMOTO_SHORT="Puerto del servidor iperf remoto TCP (versión 2)"
+MSG_IPERF_TCP_PORT_REMOTO="Puerto del servidor iperf remoto TCP (versión 2)"
+MSG_IPERF_UDP_PORT_REMOTO_SHORT="Puerto del servidor iperf remoto UDP (versión 2)"
+MSG_IPERF_UDP_PORT_REMOTO="Puerto del servidor iperf remoto UDP (versión 2)"
+
+MSG_IPERF_EXPERT_SHORT="Comando iperf"
+MSG_IPERF_EXPERT="(Modo experto) Teclear comando iperf"
+
+MSG_IPERF_VERSION_SELECT_SHORT="Versión de iperf"
+MSG_IPERF_VERSION_SELECT="Seleccione versión de iperf"
+MSG_IPERF_VERSION="Versión 2"
+
+### MSG/IPERF3 #############################################################################
+MSG_IPERF3_PORT_LOCAL_SHORT="Puerto del servidor iperf3 local (versión 3)"
+MSG_IPERF3_PORT_LOCAL="Puerto del servidor iperf3 local (versión 3)"
+MSG_IPERF3_PORT_REMOTO_SHORT="Puerto del servidor iperf3 remoto (versión 3)"
+MSG_IPERF3_PORT_REMOTO="Puerto del servidor iperf3 remoto (versión 3)"
+
+MSG_IPERF3_VERSION="Versión 3"
+
+### MSG/TEST   #############################################################################
+MSG_TEST_DURATION_SHORT="Duración de la prueba en segundos"
+MSG_TEST_DURATION="Duración de la prueba en segundos"
+MSG_TEST_INTERVAL_SHORT="Intervalo de notificaciones en segundos"
+MSG_TEST_INTERVAL="Intervalo de notificaciones en segundos"
+MSG_TEST_NAME_SHORT="Nombre de la prueba o identifidor de la red"
+MSG_TEST_NAME="Nombre de la prueba o identifidor de la red"
+
+### MSG/PASSWORD ###########################################################################
+MSG_PASSWORD="Password"
+MSG_PASSWORD_REPEAT="Repetir password"
+MSG_PASSWORD_INCORRECT="Password_no_coinciden"
+
+### MSG/MIXED ##############################################################################
+MSG_IP_REMOTE_SHORT="Direccion IP del servidor remoto"
+MSG_IP_REMOTE="Direccion IP del servidor remoto"
+
+MSG_BANDWIDTH_SHORT="Ancho de banda a generar en la linea"
+MSG_BANDWIDTH="Ancho de banda a generar en la línea (K Kilobits/sec  / M Megabits/sec)"
+
+MSG_LOG_ADD_SHORT="Añadir a log existente"
+MSG_LOG_ADD="Añadir resultados al último fichero de log?"
+
+MSG_ERROR_IP="Direccion_IP_erronea"
+MSG_ERROR_TIME="Tiempo_erroneo"
+
+MSG_RUNNING="Ejecutando: " 
+
+MSG_TIME_TO_END="Tiempo para finalizar "
+ 
+MSG_SECONDS="segundos <-------------------"
+
+MSG_ENTER_TO_CONTINUE="Pulsa una tecla para continuar..."
+MSG_PENDRIVE_EXPORT_SHORT="Exportar resultados?"
+MSG_PENDRIVE_EXPORT="Ha copiado todos los resultados a un pendrive?"
+
+### MSG/DISCLAIMER    #####################################################################################
+MSG_DISCLAIMER_01="     Exención de responsabilidad:                                                   "
+MSG_DISCLAIMER_02="     La responsabilidad de los daños y perjuicios de  cualquier naturaleza que      "
+MSG_DISCLAIMER_03="     que pudiera  derivarse del uso del LiveCD son del usuario y además deberá      "
+MSG_DISCLAIMER_04="     estar autorizado para su uso en su red de datos.                               "
+
+### MSG/WELCOME/IPERF #####################################################################################
+MSG_WELCOME_IPERF_01="                                $PROGRAMA ($VERSION)                                "
+MSG_WELCOME_IPERF_02="     $PROGRAMA  es  un distribución live basada en  Debian para medir el ancho      "
+MSG_WELCOME_IPERF_03="     de banda (throughput) y calidad de un enlace de red mediante iperf.            "
+MSG_WELCOME_IPERF_04="     El enlace a examinar  se delimita  por dos  equipos ejecutando $PROGRAMA       "
+MSG_WELCOME_IPERF_05="     uno actuando como cliente y otro como servidor.                                "
+MSG_WELCOME_IPERF_06="           Nuevas versiones en https://github.com/fmbrieva/iperftester              "
+
+### MSG/WELCOME/ROOT #####################################################################################
+MSG_WELCOME_ROOT_01="    Herramientas disponibles en el LiveCD                                           "
+MSG_WELCOME_ROOT_02="    -------------------------------------                                           "
+MSG_WELCOME_ROOT_03="     iperf iperf3 ssh ftp lftp speedtest-cli iproute2 net-tools bridge-utils lshw   "
+MSG_WELCOME_ROOT_04="     iproute2 net-tools  iputils-arping iputils-ping iputils-tracepath  zip unzip   "
+MSG_WELCOME_ROOT_05="     bridge-utils vi vim traceroute ethtool lshw ntfs-3g netcat                     "
+MSG_WELCOME_ROOT_06="    -----------------------------------------------------------------------------   "
+
+### MSG/PROXY        #####################################################################################
+MSG_PROXY_01="    Si necesita instalar nuevas herramientas y utiliza un proxy con autenticación   "
+MSG_PROXY_02="    debe ejecutar los siguientes comandos:                                          "
+MSG_PROXY_03="      export http_proxy=\"http://usuario:password@ip_del_proxy:puerto_del_proxy\"   "
+MSG_PROXY_04="      export https_proxy=\"http://usuario:password@ip_del_proxy:puerto_del_proxy\"  "
+
+### LOG ####################################################################################
+LOG_LINE_EQUAL="==================================================================="
+LOG_LINE_HASHTAG="###################################################################"
+LOG_LINE_HYPHEN_MINUS="-------------------------------------------------------------------"
+LOG_PROGRAM_VERSION="Resultados $PROGRAMA - $VERSION                                    "
+LOG_DATE="Fecha         :"
+LOG_SYSTEM="Sistema       : $(uname -a)                                        "
+LOG_IDENTIFIER="Identificador :"
+LOG_IPERF3_VERSION="Versión iperf3: $(iperf3 -v | head -1)                             "
+LOG_IPERF_VERSION="        iperf : iperf version 2.0.10 (11 Aug 2017) pthreads        "
+LOG_A_HARDWARE="A) Hardware                                                        "
+LOG_A1_HARDWARE="A.1) Red                                                           "
+LOG_B_TESTS="B) TESTS                                                           "
+LOG_B_TESTS_COMMAND_01="B."
+LOG_B_TESTS_COMMAND_02=") Comando: "
+
+### DIALOG  ################################################################################
+DIALOG_IPERF_RUNNING="Servidores iperf en ejecución"
+DIALOG_TEST_RESULTS="Resultados de los test"
+DIALOG_CHOOSE_FILE="\n      Escoja un fichero y pulse <enter> para visualizar su contenido"
+DIALOG_PENDRIVE_CONNECT="Conecte un pendrive al equipo, espere un momento\ny pulse <Aceptar> para continuar..."
+DIALOG_PENDRIVE_UNITS="Unidades disponibles"
+DIALOG_PENDRIVE_DISCONNECT="Desconecte el pendrive cuando haya finalizado el proceso de copia"
+DIALOG_DATA_ERROR="Valor_introducido_incorrecto"
+DIALOG_COMMAND_TERMINAL="Terminal de comandos"
+
+### DIALOG/MENU/IPERF  ####################################################################
+DIALOG_IPERF_SERVER_OPTION="--------------- Seleccione una opción ---------------"
+DIALOG_IPERF_SERVER_STATUS_SHORT="Estado"
+DIALOG_IPERF_SERVER_STATUS="Ver estado servidores"
+DIALOG_IPERF_SERVER_STOP_SHORT="Parar"
+DIALOG_IPERF_SERVER_STOP="Parar servidores"
+DIALOG_IPERF_SERVER_RESTART_SHORT="Reiniciar"
+DIALOG_IPERF_SERVER_RESTART="Reiniciar servidores"
+DIALOG_IPERF_SERVER_RETURN_SHORT="Volver"
+
+### DIALOG/MENU/SETUP   ####################################################################
+DIALOG_SETUP_OPTION="--------------- Seleccione una opción ---------------"
+DIALOG_SETUP_NETWORK_SHORT="Host"
+DIALOG_SETUP_NETWORK="Cambiar IP/Mascara/Gateway/Dns"
+DIALOG_SETUP_SERVER_SHORT="Servidor"
+DIALOG_SETUP_SERVER="Control de servidores "
+DIALOG_SETUP_PORT_LOCAL_SHORT="Local"
+DIALOG_SETUP_PORT_LOCAL="Cambiar puertos locales"
+DIALOG_SETUP_PORT_REMOTE_SHORT="Remoto"
+DIALOG_SETUP_PORT_REMOTE="Cambiar puertos remotos"
+DIALOG_SETUP_TIME_SHORT="Tiempo"
+DIALOG_SETUP_TIME="Cambiar tiempo/intervalo"
+DIALOG_SETUP_PASSWORD_SHORT="Password"
+DIALOG_SETUP_PASSWORD="Cambiar password"
+DIALOG_SETUP_RETURN_SHORT="Volver"
+
+### DIALOG/MENU/MAIN    ####################################################################
+IPERF3_VERSION="\Z4Iperf3\Zn"
+IPERF3_VERSION_COMPLETA="\Z4Iperf3 Versión $IPERF3_COMPILE\Zn"
+
+IPERF_VERSION="\Z1Iperf\Zn"
+IPERF_VERSION_COMPLETA="\Z1Iperf Versión $IPERF_COMPILE\Zn"
+
+DIALOG_MAIN_OPTION="\n  Los tests se realizarán con "
+DIALOG_MAIN_AUTO_SHORT="Auto"
+DIALOG_MAIN_AUTO_01="Realizar tests "
+DIALOG_MAIN_AUTO_02="de forma automática"
+DIALOG_MAIN_TCP_SHORT="TCP"
+DIALOG_MAIN_TCP_01="Prueba "
+DIALOG_MAIN_TCP_02="TCP "
+DIALOG_MAIN_UDP_SHORT="UDP"
+DIALOG_MAIN_UDP_01="Prueba"
+DIALOG_MAIN_UDP_02="UDP"
+DIALOG_MAIN_EXPERT_SHORT="Experto"
+DIALOG_MAIN_EXPERT="Teclear comando iperf ó iperf3"
+DIALOG_MAIN_SHOW_SHORT="Ver"
+DIALOG_MAIN_SHOW="Ver resultados"
+DIALOG_MAIN_BINARIO_SHORT="Binario"
+
+DIALOG_MAIN_BINARIO_V3="Cambiar a $IPERF3_VERSION_COMPLETA";  
+DIALOG_MAIN_BINARIO_V2="Cambiar a $IPERF_VERSION_COMPLETA";  
+
+DIALOG_MAIN_SETUP_SHORT="Setup"
+DIALOG_MAIN_SETUP="Configuración"
+DIALOG_MAIN_PENDRIVE_SHORT="Pendrive"
+DIALOG_MAIN_PENDRIVE="Exportar resultados"
+DIALOG_MAIN_LOGOUT_SHORT="Cerrar"
+DIALOG_MAIN_LOGOUT="Cerrar sesión"
+DIALOG_MAIN_SHUTDOWN_SHORT="Finalizar"
+DIALOG_MAIN_SHUTDOWN="Apagar equipo"
+
