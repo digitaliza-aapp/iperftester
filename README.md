@@ -53,7 +53,6 @@ Si necesita instalar nuevas herramientas y utiliza un proxy para acceder a inter
 ### Escenario 
 
 Se desea medir el `throughput` y calidad de enlaces entre dos sedes:
-ort to receive bidirectional tests back on
 
 - Sede A: Red interna a 1Gbps/1000Mbps con conexión Macrolan 100Mbps 
 - Sede B: Red interna a 1Gbps/1000Mbps con conexión Macrolan 150Mbps  
